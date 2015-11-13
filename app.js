@@ -20,7 +20,6 @@ var passportConfig = require('./auth/passport-config');
 passportConfig();
 
 mongoose.connect(config.mongoUri);
-
 var app = express();
 
 // view engine setup
