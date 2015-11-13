@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <% include ../partials/template/head.ejs %>
+          <link rel="stylesheet" href="/stylesheets/linguafranca.css">
+
+     
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title><%= title %></title>
+  </head>
+
+  <body>
+     <% include ../partials/template/sectionnav.ejs %>
+    <div class="container-fluid height-full"> 
+            <div class="row pad-top">
+                <div class="col-md-6 col-md-offset-3">
+                    <form class="form-horizontal well" role="form"  id="register" action="" method="post" accept-charset="UTF-8">
+                        <fieldset>
+                            <legend>Sign Up now!</legend>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="firstName">First Name:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="firstName" <% if(locals.firstName) {%> value="<%= firstName %>" <% } %> class="form-control" id="firstName" placeholder="Enter name" maxlength="50" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="email">Email:</label>
+                                <div class="col-sm-10">
+                                    <input type="email" name="email" <% if(locals.email) {%> value="<%= email %>" <% } %> class="form-control" id="email" placeholder="Enter email" maxlength="50" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="password">Password:</label>
+                                <div class="col-sm-10" class='pwdwidgetdiv' id='thepwddiv'> 
+                                    <input type="password" name="password" class="form-control" id="password" autocomplete="off" placeholder="Enter password" required <% if(locals.password) {%> value="<%= password %>" <% } %>>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="timezone">Timezone:</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" id="timezone-select"></select>
+                                </div>
+                            </div>
+                            <div class="form-submit"> 
+                                <div clnass="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" name="Submit" value="Submit" class="btn btn-default">Submit</button>
+                                </div>
+                            </div>
+                            <span class="text-danger"><% if(locals.error) {%> value="<%= error %>" <% } %></span>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+     <% include ../partials/template/bootstrapincludes.ejs %>
+     <script src="/javascripts/timezones.full.js"></script>
+     <script>$('#timezone-select').timezones();</script>
+  </body>
+</html>

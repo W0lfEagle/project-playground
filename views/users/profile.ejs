@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <% include ../partials/template/head.ejs %>
+     
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title><%= title %></title>
+  </head>
+
+  <body>
+      
+    <% include ../partials/template/navigation.ejs %>
+    <% if(firstName) { %>
+    <div id="greeting">
+        <strong>Hi, <%= firstName %> !</strong>
+        <a href="/users/logout">Log out</a>
+    </div>
+    <% } %>
+
+     <% include ..//partials/template/bootstrapincludes.ejs %>
+  </body>
+</html>
