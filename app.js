@@ -19,8 +19,10 @@ var passportConfig = require('./auth/passport-config');
 // var restrict = require('./auth/restrict');
 passportConfig();
 
-// mongoose.connect(config.mongoUri);
-mongoose.connect("mongodb://localhost:27017/");
+mongoose.set('debug', true);
+console.log('mongoose debugging');
+mongoose.connect(config.mongoUri);
+// mongoose.connect("mongodb://localhost:27017/students");
 var app = express();
 
 // view engine setup
