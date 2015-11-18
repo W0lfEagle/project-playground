@@ -619,6 +619,7 @@ html,body {
     cursor: pointer;
 }
 
+
 /* More theme css */
 
 
@@ -697,8 +698,13 @@ a.list-group-item.active,[class*='-info'] {
 	width: 100px;
 	/*border-radius: 25%;*/
 }
+
 .pad-top {
 	padding-top: 8%;
+}
+
+.half-pad-top {
+    padding-top: 4%;
 }
 
 #section4 {
@@ -738,15 +744,20 @@ a.list-group-item.active,[class*='-info'] {
 /*	padding-top: 70px;*/
 /*}*/
 
-.banner a {
-	text-decoration: none;
-	/*color: white;*/
-	/*transition: .2s;*/
-}
+
 
 /*#banner a:hover {*/
 /*	font-size: 150%;*/
 /*}*/
+
+#contact {
+    padding-top: 70px;
+}
+
+.mediaButtons {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
 
 footer {
 	background-color:#494949;

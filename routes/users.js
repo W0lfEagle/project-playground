@@ -40,8 +40,20 @@ router.post('/create', function(req, res, next) {
   });
 });
 
-router.post('/login', 
-function(req, res, next) {
+router.get('/login', function(req, res, next) {
+    if (req.user) {
+        return res.redirect('/users/profile');
+    }
+    var vm = {
+        title: 'Login',
+        error: req.flash('error'),
+        home: false 
+    }
+    res.render('users/login', vm);
+});
+
+
+router.post('/login', function(req, res, next) {
     if (req.body.rememberMe) {
       req.session.cookie.maxAge = config.cookieMaxAge;
     }
@@ -51,7 +63,7 @@ function(req, res, next) {
     failureRedirect: '/', 
     successRedirect: '/users/profile',
     failureFlash: 'Invalid credentials'
-  }));
+}));
 
 router.get('/profile', restrict, function(req, res, next) {
   // if (!req.isAuthenticated()) {

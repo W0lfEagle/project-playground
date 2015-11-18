@@ -19,7 +19,7 @@
         <li><a href='#howmuch'>HOW MUCH</a></li>
         <li>&nbsp;</li>
       </ul>
-      <form class="navbar-form" role="form"  id="checkemailform" action="" method="post" accept-charset="UTF-8">
+      <form class="navbar-form pull-right" role="form"  id="checkemailform" action="" method="post" accept-charset="UTF-8">
         <div class="form-group" style="display:inline;">
           <div class="input-group">
             <!--<div class="input-group-btn">-->
@@ -35,8 +35,9 @@
             <input type="email" name="email" id="nav-signup" class="form-control" placeholder="Sign up with email">
             <span class="input-group-addon"><span class="glyphicon glyphicon-ok" onclick="checkemailform.submit()"></span></span>
           </div>
+          <a href="/users/login" class="btn btn-default pull-right"><span class="glyphicon glyphicon-user"></span> Login</a>
         </div>
-      </form>
+      </form> 
       <% } %>
     </div>
   </div>

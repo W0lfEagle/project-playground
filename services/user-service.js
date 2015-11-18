@@ -29,4 +29,20 @@ exports.findUser = function(email, next) {
   });
 };
 
+// var found = false;
 
+// exports.findEmail = function(email) {
+//   User.findOne({email:email.toLowerCase()}, function(err, result) {
+//       if (err) { /* handle err */ }
+  
+//       if (result) {
+//           console.log('email found');
+//           return true;
+//       } else {
+//           console.log('email NOT found');
+//           return false;
+//       }
+//   });
+//   if (true) return true;
+//   else return false;
+// };
