@@ -33,20 +33,20 @@ router.get('/linguafranca', function(req, res, next) {
 });
 
 router.post('/linguafranca', function(req, res, next) {
-    //Email to student / email to info with student email address
-    // var mailOptions = {
-    //     from: 'info@linguafrancaworld.com', // sender address 
-    //     to: req.body.email, // list of receivers 
-    //     subject: 'Free English Trial Class', // Subject line 
-    //     text: 'Welcome to Lingua Franca English.', // plaintext body 
-    //     html: '<b>New Signup/b>' // html body 
-    // };
-    // transporter.sendMail(mailOptions, function(error, info){
-    //     if(error){
-    //         return console.log(error);
-    //     }
-    //     console.log('Message sent: ' + info.response);
-    // });
+   // Email to student / email to info with student email address
+    var mailOptions = {
+        from: 'info@linguafrancaworld.com', // sender address 
+        to: req.body.email, // list of receivers 
+        subject: 'Free English Trial Class', // Subject line 
+        text: 'Welcome to Lingua Franca English.', // plaintext body 
+        html: '<b>New Signup/b>' // html body 
+    };
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            return console.log(error);
+        }
+        console.log('Message sent: ' + info.response);
+    });
     var vm = {
         title: 'Create an account',
         home: false,
