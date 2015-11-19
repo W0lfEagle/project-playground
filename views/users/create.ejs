@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
      <% include ../partials/template/head.ejs %>
-<link rel="stylesheet" href="/stylesheets/linguafranca.css">
+    <link rel="stylesheet" href="/stylesheets/linguafranca.css">
 
      
     <meta name="description" content="">
@@ -21,31 +21,37 @@
                         <fieldset>
                             <legend>Sign Up now!</legend>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="firstName">First Name:</label>
-                                <div class="col-sm-10">
+                                <label class="control-label col-sm-3" for="firstName">First Name:</label>
+                                <div class="col-sm-9"> 
                                     <input type="text" name="firstName" <% if(locals.firstName) {%> value="<%= firstName %>" <% } %> class="form-control" id="firstName" placeholder="Enter name" maxlength="50" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="email">Email:</label>
-                                <div class="col-sm-10">
+                                <label class="control-label col-sm-3" for="email">Email:</label>
+                                <div class="col-sm-9">
                                     <input type="email" name="email" <% if(locals.email) {%> value="<%= email %>" <% } %> class="form-control" id="email" placeholder="Enter email" maxlength="50" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="password">Password:</label>
-                                <div class="col-sm-10" class='pwdwidgetdiv' id='thepwddiv'> 
+                                <label class="control-label col-sm-3" for="password">Password:</label>
+                                <div class="col-sm-9" class='pwdwidgetdiv' id='thepwddiv'> 
                                     <input type="password" name="password" class="form-control" id="password" autocomplete="off" placeholder="Enter password" required <% if(locals.password) {%> value="<%= password %>" <% } %>>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="timezone">Timezone:</label>
-                                <div class="col-sm-10">
+                                <label class="control-label col-sm-3" for="timezone">Timezone:</label>
+                                <div class="col-sm-9">
                                     <select class="form-control" id="timezone-select"></select>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="skype">Skype ID:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="skype" class="form-control" id="skype" placeholder="Enter Skype ID" maxLength="50">
+                                </div>
+                            </div>
                             <div class="form-submit"> 
-                                <div clnass="col-sm-offset-2 col-sm-10">
+                                <div class="col-sm-offset-3 col-sm-9">
                                     <button type="submit" name="Submit" value="Submit" class="btn btn-default">Submit</button>
                                 </div>
                             </div>

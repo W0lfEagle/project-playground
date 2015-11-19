@@ -619,7 +619,6 @@ html,body {
     cursor: pointer;
 }
 
-
 /* More theme css */
 
 
@@ -713,6 +712,7 @@ a.list-group-item.active,[class*='-info'] {
 }
 
 .lingua {
+    font-size: 150%;
 	color: #E2304A;
 }
 
@@ -757,6 +757,26 @@ a.list-group-item.active,[class*='-info'] {
 .mediaButtons {
     padding-top: 30px;
     padding-bottom: 30px;
+}
+
+.fa-facebook {
+    color: rgb(59, 89, 152);
+}
+
+.fa-twitter {
+    color: rgb(0, 172, 237);
+}
+
+.fa-envelope {
+    color: rgb(221, 75, 57);    
+}
+
+.fa-linkedin {
+    color: rgb(0, 123, 182);
+}
+
+.iconpad {
+    padding-right: 10px;
 }
 
 footer {
@@ -821,6 +841,7 @@ footer .nav>li>a:hover {
   border-radius: 50%;
   border: 5px solid rgba(0,0,30,0.8);
 }
+
 
 /* Price box CSS */
 
