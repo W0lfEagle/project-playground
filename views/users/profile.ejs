@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
      <% include ../partials/template/head.ejs %>
+     <link rel="stylesheet" href="/stylesheets/linguafranca.css">
+     <link rel="stylesheet" href="/stylesheets/profile.css">
      
     <meta name="description" content="">
     <meta name="author" content="">
@@ -11,15 +13,21 @@
   </head>
 
   <body>
-      
-    <% include ../partials/template/navigation.ejs %>
-    <% if(firstName) { %>
-    <div id="greeting">
-        <strong>Hi, <%= firstName %> !</strong>
-        <a href="/users/logout">Log out</a>
+    <% include ../partials/template/sectionnav.ejs %>
+    <div class="container-fluid height-full">
+        <div class="row height-full">
+            <div class="col-xs-2 profile-dock pad-top">
+                <% if(firstName) { %>
+                <div id="greeting">
+                    <strong>Hi, <%= firstName %> !</strong>
+                    <a href="/users/logout">Log out</a>
+                </div>
+                <% } %>
+                <a href="/users/profile/update">Update Profile</a>
+            </div>
+        </div>
     </div>
-    <% } %>
+     <% include ../partials/template/bootstrapincludes.ejs %>
 
-     <% include ..//partials/template/bootstrapincludes.ejs %>
   </body>
 </html>

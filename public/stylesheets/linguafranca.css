@@ -580,9 +580,12 @@
 
 html,body {
 	height: 100%;
+    padding: 0;
+}
+
+body {
     background:center no-repeat fixed url('/images/linguafranca/blurrywoman.png');
     background-size: cover;
-    padding: 0;
 }
 
 /*sectionnav css */ 
@@ -618,6 +621,10 @@ html,body {
 .input-group-addon {
     cursor: pointer;
 }
+
+.btn-transparent {
+    background: none;
+} 
 
 /* More theme css */
 
@@ -965,6 +972,46 @@ PRICING STYLES
     .db-pricing-eleven.popular .price {
         padding-top: 80px;
     }
-    
-    
-    
+
+
+/*pull-xs-left*/
+ 
+/* Extra Small Devices, Phones */ 
+/*@media only screen and (min-width : 480px) {*/
+/*    .pull-xs-left {*/
+/*        float: left;*/
+/*    }*/
+/*    .pull-xs-right {*/
+/*        float: right;*/
+/*    }*/
+/*}*/
+
+/* Small Devices, Tablets */
+/*@media only screen and (min-width : 768px) and (max-width: 991px) {*/
+/*    .pull-sm-left {*/
+/*        float: left;*/
+/*    }*/
+/*    .pull-sm-right {*/
+/*        float: right;*/
+/*    }*/
+/*}*/
+
+/* Medium Devices, Desktops */
+/*@media only screen and (min-width : 992px) and (max-width: 1199px) {*/
+/*    .pull-md-left {*/
+/*        float: left;*/
+/*    }*/
+/*    .pull-md-right {*/
+/*        float: right;*/
+/*    }*/
+/*}*/
+
+/* Large Devices, Wide Screens */
+/*@media only screen and (min-width : 1200px) {*/
+/*   .pull-lg-left {*/
+/*        float: left;*/
+/*    }*/
+/*    .pull-lg-right {*/
+/*        float: right;*/
+/*    }*/
+/*}*/

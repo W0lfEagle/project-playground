@@ -8,10 +8,10 @@ exports.addUser = function(user, next) {
       }
       var newUser = new User({
         firstName: user.firstName,
-        lastName: user.lastName,
-        credits: user.credits,
         email: user.email.toLowerCase(),
-        password: hash
+        password: hash,
+        timezone: user.timezone,
+        skype: user.skype
     });
     
     newUser.save(function(err) {
@@ -29,20 +29,57 @@ exports.findUser = function(email, next) {
   });
 };
 
-// var found = false;
+exports.updateUser = function(email, req) {
+  User.find({email:email.toLowerCase()}, function(err, user) {
+    if (err) {
+      console.log(err);
+    }
+    console.log('before update' + user);
+    
+  //   console.log(req.firstName);
+  //   user.firstName = req.firstName;
+  //   user.save(function(err) {
+  //     if (err) {
+        
+  //     }
+  //   });
+  //   console.log('after update' + user);
+    
+  });
+  bcrypt.hash(req.password, 10, function(err, hash) {
+      if (err) {
+        //do something
+      }
+      User.update({email:email.toLowerCase()}, { $set: { 
+                        firstName: req.firstName,
+                        email: req.email,
+                        password: hash,  //make hash
+                        timezone: req.timezone,
+                        skype: req.skype }}, function(err) {
+        console.log(err);
+      });
+  });
+  User.find({email:email.toLowerCase()}, function(err, user) {
+    if (err) {
+      console.log(err);
+    }
+    console.log('after update' + user);
+  });
+};
+
 
 // exports.findEmail = function(email) {
+//  var found = 'hello';
 //   User.findOne({email:email.toLowerCase()}, function(err, result) {
 //       if (err) { /* handle err */ }
   
 //       if (result) {
 //           console.log('email found');
-//           return true;
+//           found = 'email found';
 //       } else {
 //           console.log('email NOT found');
-//           return false;
+//           found = 'email not found';
 //       }
 //   });
-//   if (true) return true;
-//   else return false;
+//   console.log('the value of found is: ' + found);
 // };

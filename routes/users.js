@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 router.get('/create', function(req, res, next) {
   var vm = {
     title: 'Create an account',
-    home:  false
+    page:  'signup'
   };
   res.render('users/create', vm);
 });
@@ -22,6 +22,7 @@ router.get('/create', function(req, res, next) {
 /* GET /users/create */
 router.post('/create', function(req, res, next) {
   // console.log(req.body);
+
   userService.addUser(req.body, function(err) {
     if (err) {
       console.log(err);
@@ -29,10 +30,10 @@ router.post('/create', function(req, res, next) {
         title: 'Create an account',
         input: req.body,
         error: err,
-        home: false
+        page: 'signup'
       };
       delete vm.input.password;
-      return res.render('users/create', vm);
+      return res.render('/users/create', vm);
     }
     req.login(req.body, function(err) {
       res.redirect('/users/profile');
@@ -47,7 +48,7 @@ router.get('/login', function(req, res, next) {
     var vm = {
         title: 'Login',
         error: req.flash('error'),
-        home: false 
+        page: 'login' 
     }
     res.render('users/login', vm);
 });
@@ -71,9 +72,28 @@ router.get('/profile', restrict, function(req, res, next) {
   // }
   var vm = {
     title: 'Welcome to the profile',
-    firstName: req.user ? req.user.firstName : null
+    firstName: req.user ? req.user.firstName : null,
+    page: 'profile'
   }
   res.render('users/profile', vm);
+});
+
+router.get('/profile/update', restrict, function(req, res, next) {
+  var vm = {
+    title: 'Update your profile',
+    firstName: req.user ? req.user.firstName : null,
+    email: req.user ? req.user.email : null,
+    timezone: req.user ? req.user.timezone : null,
+    skype: req.user ? req.user.skype : null,
+    page: 'update'
+  }
+  res.render('users/update', vm);
+})
+
+router.post('/profile/update', function(req, res, next) {
+  console.log('testing the update function');
+  userService.updateUser('wilfengel@gmail.com', req.body);
+  res.redirect('/users/profile');
 });
 
 router.get('/logout', function(req, res, next) {

@@ -6,6 +6,9 @@ var userSchema = new Schema({
     firstName: {type:String, required: 'Please enter your first name'},
     email: {type:String, required: 'Please enter your email'},
     password: {type:String, required: 'Please enter your password'},
+    timezone: {type:String},
+    skype: {type:String},
+    credits: {type:Number, default: 0},
     created: {type: Date, default: Date.now}
 });
 
