@@ -46,7 +46,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="skype">Skype ID:</label>
                             <div class="col-sm-9">
-                                <input type="text" name="skype" class="form-control" id="skype" placeholder="Enter Skype ID" maxLength="50">
+                                <input type="text" name="skype"<% if(locals.skype) {%> value="<%= skype %>" <% } %> class="form-control" id="skype" placeholder="Enter Skype ID" maxLength="50">
                             </div>
                         </div>
                         <div class="form-submit"> 
