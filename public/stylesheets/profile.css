@@ -1,0 +1,35 @@
+body {
+    background: none;
+}
+
+.profile-dock {
+    background-color: #2f4f4f;
+    height: 100vh;
+    position: fixed;
+    /*color: #ecf3f3;*/
+}
+
+.height-full {
+    min-height: 100vh;
+}
+
+.no-pad { 
+    padding: 0;
+}
+
+.btn-bottom {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+.user-info ul {
+    list-style-type: none;
+    background-color: inherit; 
+    color: #ecf3f3;
+    padding: 0;
+}
+
+.user-info ul li {
+    padding-bottom: 10px;
+} 
