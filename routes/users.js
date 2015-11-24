@@ -73,6 +73,9 @@ router.get('/profile', restrict, function(req, res, next) {
   var vm = {
     title: 'Welcome to the profile',
     firstName: req.user ? req.user.firstName : null,
+      email: req.user ? req.user.email : null,
+    timezone: req.user ? req.user.timezone : null,
+    skype: req.user ? req.user.skype : null,
     page: 'profile'
   }
   res.render('users/profile', vm);

@@ -13,21 +13,71 @@
   </head>
 
   <body>
-    <% include ../partials/template/sectionnav.ejs %>
+    <!--<% include ../partials/template/sectionnav.ejs %>-->
     <div class="container-fluid height-full">
         <div class="row height-full">
-            <div class="col-xs-2 profile-dock pad-top">
-                <% if(firstName) { %>
-                <div id="greeting">
-                    <strong>Hi, <%= firstName %> !</strong>
-                    <a href="/users/logout">Log out</a>
+            <div class="col-xs-2 profile-dock">
+                <div class="row"> 
+                  <div class="col-xs-12 no-pad">
+                      <div class="card profile-card"> 
+                          <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+                          <div class="avatar">
+                              <img src="" alt="" />
+                          </div>
+                          <!--<div class="content half-pad-top">-->
+                              <!--<ul class="fa-ul">--> 
+                              <!--    <li><i class="fa-li fa fa-flag iconpad"></i>United States</li>-->
+                              <!--    <li><i class="fa-li fa fa-graduation-cap iconpad"></i>International Development</li>-->
+                              <!--</ul>-->
+                          <!--    <p>Felicity</p>-->
+                          <!--       <p><i class="fa fa-flag iconpad"></i>United States</p>-->
+                          <!--      <p><i class="fa fa-graduation-cap iconpad"></i>International Development</p>-->
+                          <!--      <p>5+ years of teaching experience both in the classroom and online.</p>-->
+                          <!--    <p><button type="button" class="btn btn-default" onclick="window.open('https://cl.linkedin.com/in/felicityforsyth')"><i class="fa fa-linkedin iconpad"></i>View Profile</button></p>-->
+                          <!--</div><!-- content --> 
+                      </div><!-- card -->
+                  </div><!-- col -->
+                 </div><!-- row -->
+                 <div class="row">
+                     <div class="col-xs-12 text-center pad-top user-info">
+                         <ul>
+                             <% if(firstName) { %>
+                                <li><%= firstName %></li>
+                                <!--<a href="/users/logout">Log out</a>-->
+                            <% } %>
+                            <% if(email) { %>
+                                <li><%= email %></li>
+                                <!--<a href="/users/logout">Log out</a>-->
+                            <% } %>
+                            <% if(timezone) { %>
+                                <li>Your timezone: <%= timezone %></li>
+                                <!--<a href="/users/logout">Log out</a>-->
+                            <% } %>
+                            <% if(skype) { %>
+                                <li>Skype ID: <%= skype %></li>
+                                <!--<a href="/users/logout">Log out</a>-->
+                            <% } %>
+                        </ul>
+                    </div><!-- col-->
+                </div><!-- row -->
+                <!--<div class="container-fluid">-->
+                <div class="row btn-bottom">
+                    <div class="col-xs-12">
+                        <!--<div class="btn-bottom">-->
+                            <a href="/users/profile/update" class="btn btn-default btn-block btn-xs"><span class="glyphicon glyphicon-edit"></span> Edit Profile</a>
+                            <a href="/users/logout" class="btn btn-default btn-block btn-xs"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                        <!--</div>-->
+                    </div><!-- col -->
+                </div><!-- row -->
                 </div>
-                <% } %>
-                <a href="/users/profile/update">Update Profile</a>
-            </div>
-        </div>
-    </div>
+            </div><!-- col profile dock -->
+        </div><!-- row -->
+            <img class="src-image resize-img"  src="/images/linguafranca/wilf.jpg" alt="Wilf profile picture">
+
+    </div><!-- container -->
      <% include ../partials/template/bootstrapincludes.ejs %>
+    <script src="/javascripts/stack-blur.js"></script>
+
 
   </body>
 </html>

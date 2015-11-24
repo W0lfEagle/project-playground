@@ -661,10 +661,10 @@ section {
   /*background: radial-gradient(rgba(255,255,255,.8), rgba(255,255,255,.5), rgba(255,255,255,0) 70%); /* Standard syntax */
 /*}*/
 
-a.list-group-item.active,[class*='-info'] {
-	background-color: #168ccc;
-    color:#fff;
-}
+/*a.list-group-item.active,[class*='-info'] {*/
+/*	background-color: #168ccc;*/
+/*    color:#fff;*/
+/*}*/
   
 #section1 {
 	/*background-color: #168ccc;*/
@@ -849,6 +849,16 @@ footer .nav>li>a:hover {
   border: 5px solid rgba(0,0,30,0.8);
 }
 
+.profile-card,
+.profile-card .avatar img,
+.profile-card .header-bg {
+    border: none;
+    background: none;
+}
+
+.profile-card { 
+    border-radius: 0;
+} 
 
 /* Price box CSS */
 
