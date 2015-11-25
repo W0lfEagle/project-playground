@@ -35,16 +35,13 @@ body {
     padding-bottom: 10px;
 } 
 
-.word-list, .lesson-elect {
+.word-list, .lesson-elect, .previous-lessons {
     /*margin: 10px;*/
     /*margin-top: 10px;*/
     height: 50vh;
     color:  #212121;
     overflow: hidden;
-}
-
-.word-list {
-   background-color: #CFD8DC;
+    background-color: #CFD8DC;
 }
 
 .word-list h1 {
@@ -63,10 +60,6 @@ body {
     /*margin-top: 100px;*/
     background-color: #26A69A; 
     border-radius: 8px;
-}
-
-.lesson-elect {
-    background-color: #F5F5F5;
 }
 
 .lesson-elect .row {
