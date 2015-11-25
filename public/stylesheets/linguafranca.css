@@ -757,6 +757,10 @@ section {
 /*	font-size: 150%;*/
 /*}*/
 
+#betaTeam {
+    background-color: #1FDA9A;
+}
+
 #contact {
     padding-top: 70px;
 }

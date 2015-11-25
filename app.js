@@ -12,6 +12,7 @@ var connectMongo = require('connect-mongo'); //For persistent sessions
 var config = require('./config'); //Mongo config
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var beta = require('./routes/beta');
 
 var MongoStore = connectMongo(expressSession);
 
@@ -52,6 +53,7 @@ app.use(passport.session());
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/beta', beta);
 // app.use(restrict);
 // app.use('/orders', orders);
 
