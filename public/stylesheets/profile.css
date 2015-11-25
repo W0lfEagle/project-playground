@@ -1,6 +1,6 @@
 body {
     background: none;
-    background-color: #FAFAFA;
+    background-color: #CFD8DC;
 }
 
 .profile-dock {
@@ -41,7 +41,8 @@ body {
     height: 50vh;
     color:  #212121;
     overflow: hidden;
-    background-color: #CFD8DC;
+    /*background-color: #CFD8DC;*/ 
+    margin-bottom: 45px;   
 }
 
 .word-list h1 {
