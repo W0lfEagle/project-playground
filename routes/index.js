@@ -24,6 +24,23 @@ router.get('/', function(req, res, next) {
     res.render('linguafranca', vm);
 });
 
+/*Classroom*/
+router.get('/classroom', function(req, res, next) {
+    var vm = {
+        title: 'The Classroom',
+        page: 'classroom' 
+    }
+    res.render('classroom', vm);
+});
+/*Student classroom*/
+router.get('/classroom-student', function(req, res, next) {
+    var vm = {
+        title: 'Student Classroom',
+        page: 'student classroom' 
+    }
+    res.render('classroom-student', vm);
+});
+
 // router.get('/linguafranca', function(req, res, next) {
 //     var vm = {
 //         title: 'Lingua Franca World',

@@ -43,19 +43,20 @@
                          <ul>
                              <% if(firstName) { %>
                                 <li><%= firstName %></li>
-                                <!--<a href="/users/logout">Log out</a>-->
                             <% } %>
                             <% if(email) { %>
                                 <li><%= email %></li>
-                                <!--<a href="/users/logout">Log out</a>-->
                             <% } %>
                             <% if(timezone) { %>
                                 <li>Your timezone: <%= timezone %></li>
-                                <!--<a href="/users/logout">Log out</a>-->
                             <% } %>
                             <% if(skype) { %>
                                 <li>Skype ID: <%= skype %></li>
-                                <!--<a href="/users/logout">Log out</a>-->
+                            <% } %>
+                            <% if(credits != null) { %>
+                                <li class="pad-top">Credits: <%- credits %></li> 
+                                <a href="" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a>
+                                <a href="" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-gift"></span> Get FREE</a>       
                             <% } %>
                         </ul>
                     </div><!-- col-->
@@ -135,7 +136,7 @@
                         </div> <!-- col wordlist -->
                     </div><!-- row -->    
                 </div><!-- col -->
-            <div class="col-xs-12 col-sm-offset-2">
+            <div class="col-xs-10 col-sm-offset-2"> 
                 <div class="row block-row-green"> 
                         <div class="col-xs-12 col-sm-10 col-sm-offset-1 lesson-elect well box-shadow-2"> 
                             <h1 class="text-center">Lessons</h1>
@@ -156,24 +157,6 @@
                                     <h2>Life</h2>
                                     <!--<img src="/images/lessonthumbs/landscape.jpg">-->
                                 </div>
-                            <!--</div>-->
-                            <!--<div class="row">-->
-                                <div class="col-xs-3 lesson-card">
-                                    <h2>Work</h2>
-                                    <!--<img src="/images/lessonthumbs/office.jpg">-->
-                                </div>
-                                <div class="col-xs-3 lesson-card">
-                                    <h2>Travel</h2>
-                                    <!--<img src="/images/lessonthumbs/plane.jpg">-->
-                                </div>
-                                <div class="col-xs-3 lesson-card">
-                                    <h2>School</h2>
-                                    <!--<img src="/images/lessonthumbs/school.jpg">-->
-                                </div>
-                                <div class="col-xs-3 lesson-card">
-                                    <h2>Study</h2>
-                                    <!--<img src="/images/lessonthumbs/university.jpg">-->
-                                </div>
                             </div> 
                             <h2 class='text-center see-more'>See More</h2> 
                         </div><!-- col well -->
@@ -189,14 +172,14 @@
             </div>
             <div class="col-xs-10 col-xs-offset-2"> 
                 <div class="row block-row-gold">   
-                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 previous-lessons well box-shadow-2"> 
-                        <h1 class="text-center">Something else?</h1>
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 progress well box-shadow-2"> 
+                        <h1 class="text-center">Progress</h1>
                         <h2 class='text-center see-more'>See More</h2>
                     </div>
                 </div>
             </div>
         </div><!-- row -->
-            <img class="src-image resize-img"  src="/images/linguafranca/wilf.jpg" alt="Wilf profile picture">
+            <img class="src-image resize-img"  src="/images/linguafranca/female.jpg" alt="random profile picture">
 
     </div><!-- container -->
      <% include ../partials/template/bootstrapincludes.ejs %>

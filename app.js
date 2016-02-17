@@ -8,6 +8,7 @@ var passport = require('passport'); //For user login
 var expressSession = require('express-session'); //For login session
 var flash = require('connect-flash'); //For error messages
 var connectMongo = require('connect-mongo'); //For persistent sessions
+// var angular = require('angular');
 
 var config = require('./config'); //Mongo config
 var routes = require('./routes/index');
@@ -57,6 +58,7 @@ app.use('/beta', beta);
 // app.use(restrict);
 // app.use('/orders', orders);
 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -88,5 +90,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
+
+// angular.module('app', ['angular-loading-bar']); 
 
 module.exports = app;

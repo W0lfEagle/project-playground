@@ -39,7 +39,7 @@ body {
 .well {
     /*margin: 10px;*/
     /*margin-top: 10px;*/
-    height: 50vh;
+    /*height: 50vh;*/
     color:  #212121;
     overflow: hidden;
     /*background-color: #CFD8DC;*/ 
@@ -92,7 +92,7 @@ body {
 }
 
 .lesson-elect .row {
-    height: 150px;
+    /*height: 150px;*/
     /*background-color: black;*/
 }
  
@@ -185,61 +185,10 @@ body {
     background: no-repeat url('/images/lessonthumbs/landscape.jpg'); 
     background-size: cover;
 }
- 
-.lesson-card:nth-child(5) {
-    background:
-        center no-repeat fixed
-        
-        linear-gradient(
-          rgba(0, 0, 0, 0.45), 
-          rgba(0, 0, 0, 0.45)
-        ),
-        /* bottom, image */
-        url('/images/lessonthumbs/office.jpg');
-    background-size: cover;
-}
 
-.lesson-card:nth-child(6) {
-    background:
-        center no-repeat fixed
-        
-        linear-gradient(
-          rgba(0, 0, 0, 0.45), 
-          rgba(0, 0, 0, 0.45)
-        ),
-        /* bottom, image */
-        url('/images/lessonthumbs/plane.jpg');
-    background-size: cover;
-}
-
-.lesson-card:nth-child(7) {
-    background:
-        center no-repeat fixed
-        
-        linear-gradient( 
-          rgba(0, 0, 0, 0.45), 
-          rgba(0, 0, 0, 0.45)
-        ),
-        /* bottom, image */
-        url('/images/lessonthumbs/school.jpg');
-    background-size: cover;
-}
-
-.lesson-card:nth-child(8) {
-    background:
-        center no-repeat fixed
-        
-        linear-gradient(
-          rgba(0, 0, 0, 0.45), 
-          rgba(0, 0, 0, 0.45)
-        ),
-        /* bottom, image */
-        url('/images/lessonthumbs/university.jpg');
-    background-size: cover;
-}
-
-.word-list, .lesson-elect, .previous-lessons {
+.word-list, .lesson-elect, .previous-lessons, .progress {
     position: relative;
+    height: 50vh;
 }
 
 .see-more {
@@ -265,3 +214,20 @@ body {
 /*.btn-blue:hover {*/
 /*    background-color: rgba(40, 171, 227, 0.95);*/
 /*}*/
+
+#section2 {
+    position: relative;
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: 0;
+} 
+
+.picture-well {
+    height: 25vh;
+}  
+.profile-well {
+background: no-repeat url('/images/project/profile-v1.png');
+    background-size: contain;
+}

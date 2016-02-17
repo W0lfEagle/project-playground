@@ -680,8 +680,15 @@ section {
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
+	position: relative;
 	/*color: #737373;*/
 	/*padding-bottom: 50px;*/
+}
+  
+.scroll-hint {
+    color: #292929;
+    position: absolute;
+    bottom: 25px;
 }
   
 #section2, #section5, #contact {
