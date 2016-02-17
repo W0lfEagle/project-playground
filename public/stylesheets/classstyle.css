@@ -1,0 +1,184 @@
+/*body {*/
+  /*padding: 50px;*/
+  /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
+/*}*/
+
+/*a {*/
+  /*color: #00B7FF;*/
+/*}*/
+
+
+.height-full {
+  height: 100vh;
+}
+
+.height-half {
+  height: 50vh;
+}
+
+.pad-bottom {
+  padding-bottom: 100px;
+}
+
+.blue, .blue a {
+  background-color: #86A8AE;
+  color: #fcfcfc;
+  text-decoration: none;
+}
+
+h1 {
+  font-family: 'Itim', cursive;
+  font-weight: 400;
+  padding-bottom: 50px;
+}
+
+p {
+  font-family: 'Catamaran', sans-serif;
+  font-weight: 200;
+}
+
+h2, h3, a, li {
+  font-family: 'Catamaran', sans-serif;
+  font-weight: 400;
+}
+
+/*.logreg {
+	float:none;
+    display:inline-block;
+    vertical-align:middle;
+    margin-right:-4px;
+}*/
+
+.pad-top {
+  padding-top: 20%;
+}
+
+input.spmhidip {
+  display: none;
+  width:10px;
+  height:3px;
+}
+
+.lesson, .commsbar {
+  background-color: #ededed;
+}
+
+.lesson {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.conversation, .reading, .vocab {
+  /*background-color: #ff6a33;*/
+  min-height: 50vh;
+  padding-top: 100px;
+}
+
+.conversation .section-content {
+  line-height: 200%;
+}
+
+.commsbar {
+  position: fixed;
+}
+
+/*.commsbar {
+	background-color: #1a1a1a;
+}*/
+
+.video {
+  background-color: black;
+  /*background-image: url('../img/scary-face.jpg');*/
+  /*background-repeat: no-repeat;*/
+  /*background-size: cover;*/
+  border-radius: 5px;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.chat {
+  /*background-color: green;*/
+  /*background-size: cover;*/
+  /*height: 100%;*/
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 50px;
+  padding-bottom: 50px;
+}
+
+.their-video, .my-video {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/*center video in container*/
+.their-video {
+  right: -20%;
+}
+
+.this-video {
+  /*position: relative;*/
+  width: 100px;
+  height: 80px;
+  /*background-color: black;*/
+  margin-top: 15px;
+  /*background-image: url('../img/teacher-face.png');*/
+  /*background-repeat: no-repeat;*/
+  /*background-size: cover;*/
+}
+
+.this-message, .that-message {
+  width: 75%;
+  min-height: 30px;
+  margin-top: 20px;
+  /*position: relative;*/
+  padding-left: 20px;
+  padding-top: 8px;
+  color: white;
+}
+
+.this-message {
+  background-color: #53adcb;
+  border-radius: 5px 5px 0 5px;
+  /*right: 50px;*/
+}
+
+.that-message {
+  background-color: #51e951;
+  border-radius: 5px 5px 5px 0;
+  /*left: 50px;*/
+  /*top: 60px;*/
+}
+
+/*.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}*/
+
+.type-chat {
+  width: 75%;
+  margin-top: 20px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  /*background-color: black;*/
+  /*position: absolute;*/
+
+}
+
+/*#make-call:active {*/
+  /*display: none;*/
+/*}*/

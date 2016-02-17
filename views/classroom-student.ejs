@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><% include partials/template/classhead.ejs %>
+</head>
+<body>
+<div class="container-fluid height-full">
+    <div class="row height-full">
+        <% include partials/content/lesson.ejs %>
+        <% include partials/content/comms.ejs %>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();
+    });
+</script>
+<!--<script src="/javascripts/scrollBottom.js"></script>-->
+<script src="/javascripts/call-student.js"></script>
+</body>
+</html>
