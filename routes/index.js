@@ -40,6 +40,14 @@ router.get('/classroom-student', function(req, res, next) {
     }
     res.render('classroom-student', vm);
 });
+/*Test Room*/
+router.get('/testroom', function(req, res, next) {
+    var vm = {
+        title: 'Testing Room',
+        page: 'testroom' 
+    }
+    res.render('testRoom', vm);
+});
 
 // router.get('/linguafranca', function(req, res, next) {
 //     var vm = {

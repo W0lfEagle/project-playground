@@ -1,11 +1,16 @@
-/*body {*/
+body {
   /*padding: 50px;*/
   /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
-/*}*/
+  background-color: #C4C4C4;
+}
 
 /*a {*/
   /*color: #00B7FF;*/
 /*}*/
+
+.no-pad {
+  padding: 0;
+}
 
 
 .height-full {
@@ -20,27 +25,27 @@
   padding-bottom: 100px;
 }
 
-.blue, .blue a {
-  background-color: #86A8AE;
-  color: #fcfcfc;
-  text-decoration: none;
-}
+/*.blue, .blue a {*/
+/*  background-color: #86A8AE;*/
+/*  color: #fcfcfc;*/
+/*  text-decoration: none;*/
+/*}*/
 
-h1 {
-  font-family: 'Itim', cursive;
-  font-weight: 400;
+.panel h1 {
+  /*font-family: 'Itim', cursive;*/
+  /*font-weight: 400;*/
   padding-bottom: 50px;
 }
 
-p {
-  font-family: 'Catamaran', sans-serif;
-  font-weight: 200;
-}
+/*p {*/
+/*  font-family: 'Catamaran', sans-serif;*/
+/*  font-weight: 200;*/
+/*}*/
 
-h2, h3, a, li {
-  font-family: 'Catamaran', sans-serif;
-  font-weight: 400;
-}
+/*h2, h3, a, li {*/
+/*  font-family: 'Catamaran', sans-serif;*/
+/*  font-weight: 400;*/
+/*}*/
 
 /*.logreg {
 	float:none;
@@ -49,8 +54,13 @@ h2, h3, a, li {
     margin-right:-4px;
 }*/
 
+.insert-panel {
+  height: 30vh;
+  overflow-y: auto;
+}
+
 .pad-top {
-  padding-top: 20%;
+  padding-top: 10%;
 }
 
 input.spmhidip {
@@ -59,24 +69,25 @@ input.spmhidip {
   height:3px;
 }
 
-.lesson, .commsbar {
+.commsbar {
   background-color: #ededed;
 }
 
 .lesson {
   overflow-y: auto;
   overflow-x: hidden;
+  padding: 0;
 }
 
-.conversation, .reading, .vocab {
+/*.conversation, .reading, .vocab {*/
   /*background-color: #ff6a33;*/
-  min-height: 50vh;
-  padding-top: 100px;
-}
+/*  min-height: 50vh;*/
+/*  padding-top: 100px;*/
+/*}*/
 
-.conversation .section-content {
-  line-height: 200%;
-}
+/*.conversation .section-content {*/
+/*  line-height: 200%;*/
+/*}*/
 
 .commsbar {
   position: fixed;
@@ -106,7 +117,7 @@ input.spmhidip {
   /*height: 100%;*/
   overflow-y: auto;
   overflow-x: hidden;
-  margin-bottom: 50px;
+  /*margin-bottom: 50px;*/
   padding-bottom: 50px;
 }
 
@@ -118,12 +129,12 @@ input.spmhidip {
   right: 0;
 }
 
-/*center video in container*/
-.their-video {
-  right: -20%;
-}
+/*center video in container MEDIA QUERY*/
+/*.their-video {*/
+/*  right: -15%;*/
+/*}*/
 
-.this-video {
+.my-video-div {
   /*position: relative;*/
   width: 100px;
   height: 80px;
@@ -132,6 +143,12 @@ input.spmhidip {
   /*background-image: url('../img/teacher-face.png');*/
   /*background-repeat: no-repeat;*/
   /*background-size: cover;*/
+}
+
+.video-buttons {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
 
 .this-message, .that-message {
@@ -182,3 +199,8 @@ input.spmhidip {
 /*#make-call:active {*/
   /*display: none;*/
 /*}*/
+
+.highlight {
+	background-color:	rgba(243,243,21,0.4);
+	font-weight:		bold;
+}

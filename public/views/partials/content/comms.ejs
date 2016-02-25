@@ -1,0 +1,35 @@
+<div class="col-sm-4 height-full commsbar">
+    <div class="container-fluid height-full">
+        <div class="row">
+            <div class="col-xs-12 height-half">
+                <!--<a href="#" id="make-call">Call</a>-->
+                <!--<a href="" id="end-call">End Call</a>-->
+                
+                <!--<button onclick="hangUp()">End Call</button>-->
+                <!--<a href="" onclick="hangUp()" class="btn btn-raised btn-danger">End Call</a>-->
+                <div class="video">
+                    <!--<video id="their-video" autoplay class="their-video"></video>-->
+                    <!--<div class="this-video">-->
+                    <!--    <video id="my-video" muted="true" autoplay class="my-video"></video>-->
+                    <!--</div>-->
+                    <video id="caller" class="their-video" muted="muted"></video>
+                    <div class="my-video-div">
+                        <video id="self" class="my-video"></video>
+                    </div>
+                    <div class="video-buttons">
+                        <a href="" onclick="" class="btn btn-success btn-fab"><i class="material-icons">call</i></a>
+                        <a href="" onclick="hangUp()" class="btn btn-danger btn-fab"><i class="material-icons">call end</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 height-half chat pad-top" id="chat-window">
+                <div id="otherClients"> clients</div>
+            </div>
+            <div class="type-chat pull-right">
+                <input type="text" name="chat" class="form-control" id="chat" placeholder="Say something" maxlength="500">
+            </div>
+        </div>
+    </div>
+</div>

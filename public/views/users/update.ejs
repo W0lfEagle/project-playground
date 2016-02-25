@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <% include ../partials/template/head.ejs %>
+     <link rel="stylesheet" href="/stylesheets/linguafranca.css">
+     
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title><%= title %></title>
+  </head>
+
+  <body>
+     <% include ../partials/template/sectionnav.ejs %>
+<div class="container-fluid height-full">
+        <div class="row pad-top">
+            <div class="col-md-6 col-md-offset-3">
+                <form class="form-horizontal well" role="form"  id="register" action="" method="post" accept-charset="UTF-8">
+                    <fieldset>
+                        <legend>Update Profile</legend>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="firstName">First Name:</label>
+                            <div class="col-sm-9"> 
+                                <input type="text" name="firstName" <% if(locals.firstName) {%> value="<%= firstName %>" <% } %> class="form-control" id="firstName" placeholder="Enter name" maxlength="50" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="email">Email:</label>
+                            <div class="col-sm-9">
+                                <input type="email" name="email" <% if(locals.email) {%> value="<%= email %>" <% } %> class="form-control" id="email" placeholder="Enter email" maxlength="50" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="password">Password:</label>
+                            <div class="col-sm-9" class='pwdwidgetdiv' id='thepwddiv'> 
+                                <input type="password" name="password" class="form-control" id="password" autocomplete="off" placeholder="Enter password" required <% if(locals.password) {%> value="<%= password %>" <% } %>>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="timezone">Timezone:</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" name="timezone" id="timezone-select"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="skype">Skype ID:</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="skype"<% if(locals.skype) {%> value="<%= skype %>" <% } %> class="form-control" id="skype" placeholder="Enter Skype ID" maxLength="50">
+                            </div>
+                        </div>
+                        <div class="form-submit"> 
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" name="Submit" value="Submit" class="btn btn-default">Submit</button>
+                            </div>
+                            <span class="text-danger"><% if(locals.error) {%> value="<%= error %>" <% } %></span>
+                        </div>
+                    <fieldset>
+                </form>
+            </div> <!--col -->
+        </div> <!--row -->
+    </div> <!--container -->
+         <% include ../partials/template/bootstrapincludes.ejs %>
+                   <script src="/javascripts/timezones.full.js"></script>
+     <script>$('#timezone-select').timezones();</script>
+  </body>
+</html>

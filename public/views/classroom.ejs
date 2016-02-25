@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><% include partials/template/classhead.ejs %>
+<script src="libs/angular/angular.min.js"></script>
+<script src="libs/angular-route/angular-route.min.js"></script>
+
+<!--<script src="js/appRoutes.js"></script>-->
+<script src="javascripts/classroom/classroom.module.js"></script>
+<script src="javascripts/readblock/readBlock.module.js"></script>
+</head>
+<body>
+<div class="container-fluid height-full" ng-app="classroomApp" ng-controller="classroomController">
+    <div class="row height-full">
+        <% include partials/content/lesson.ejs %>
+        <% include partials/content/comms.ejs %>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();
+    });
+</script>
+<!--<script src="/javascripts/scrollBottom.js"></script>-->
+<script src="/javascripts/call-teacher.js"></script>
+
+</body>
+</html>

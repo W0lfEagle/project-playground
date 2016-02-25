@@ -1,0 +1,113 @@
+<div class="col-sm-8 height-full lesson" id="lesson">
+    <!--<h1 class="text-center"> T </h1>-->
+    <!--<a href="#" id="insert-module">Insert Module</a>-->
+
+<!-- FROM https://docs.angularjs.org/api/ng/directive/ngInclude -->
+    
+    
+    <div class="container-fluid pad-top">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+           <div class="panel panel-info">
+              <div class="panel-heading">
+                <h1 class="panel-title">Insert Block</h3>
+              </div>
+              <div class="panel-body  insert-panel">
+                    <!--<button onclick="sendMessage('blockInsert', 'reading block')">Block insert</button>-->
+                    <!--<a href="" onclick="sendMessage('blokInsert, 'reading block')" class="btn btn-raised btn-info">Insert</a>-->
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <!--<div class="card">-->
+                            <!--    <div class="card-height-indicator"></div>-->
+                            <!--    <div class="card-content">-->
+                            <!--        <div class="card-image">-->
+                            <!--            <img src="./image.jpg" alt="Loading image...">-->
+                            <!--            <h3 class="card-image-headline">Lorem Ipsum Dolor</h3>-->
+                            <!--        </div>-->
+                            <!--        <div class="card-body">-->
+                            <!--            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>-->
+                            <!--        </div>-->
+                            <!--        <footer class="card-footer">-->
+                                        <!--<button class="btn btn-flat">Share</button>-->
+                            <!--            <button class="btn btn-flat btn-warning">Insert</button>-->
+                            <!--        </footer>-->
+                            <!--    </div>-->
+                            <!--</div>-->
+                            <div class="panel panel-warning">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Vocabulary</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <p>A selection of vocabulary related to the world of engineering</p>
+                                    <button class="btn btn-flat btn-warning" onclick="sendMessage('blockInsert, 'vocab block')">Preview</button>
+                                </div>
+                            </div>
+                        </div> <!-- col -->
+                        <div class="col-sm-4">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Conversation</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <p>Questions about current affairs</p>
+                                    <button class="btn btn-flat btn-warning" onclick="sendMessage('blockInsert, 'conversation block')">Preview</button>
+                                </div>
+                            </div>
+                        </div> <!-- col -->
+                        <div class="col-sm-4">
+                            <div class="panel panel-success">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Reading</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <p>The fall of the Soviet Empire</p>
+                                    <button class="btn btn-flat btn-warning" onclick="sendMessage('blockInsert, 'reading block')">Preview</button>
+                                </div>
+                            </div>
+                        </div> <!-- col -->
+                    </div> <!-- row -->
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="panel panel-success">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Reading</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <p>Constructing the Eifle Tower</p>
+                                    <button class="btn btn-flat btn-warning" onclick="sendMessage('blockInsert, 'reading block')">Preview</button>
+                                </div>
+                            </div>
+                        </div> <!-- col -->
+                        <div class="col-sm-4">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Conversation</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <p>Questions about artificial intelligence</p>
+                                    <button class="btn btn-flat btn-warning" onclick="sendMessage('blockInsert, 'conversation block')">Preview</button>
+                                </div>
+                            </div>
+                        </div> <!-- col -->
+                        <div class="col-sm-4">
+                            <div class="panel panel-warning">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Vocabulary</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <p>A selection of vocabulary related to the world of aviation</p>
+                                    <button class="btn btn-flat btn-warning" onclick="sendMessage('blockInsert, 'vocab block')">Preview</button>
+                                </div>
+                            </div>
+                        </div> <!-- col -->
+                    </div> <!-- row -->
+              </div> <!-- panel body -->
+            </div> <!-- panel -->
+        </div> <!-- col -->
+    </div> <!-- container -->
+    <!--</div>-->
+    
+    <div ng-repeat="block in blocks">
+        <div ng-include="block.url"></div>
+    </div>
+
+</div>

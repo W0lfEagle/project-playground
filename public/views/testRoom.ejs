@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head><% include partials/template/classhead.ejs %>
+<script src="libs/angular/angular.min.js"></script>
+<script src="libs/angular-route/angular-route.min.js"></script>
+
+<!--<script src="js/appRoutes.js"></script>-->
+<script src="javascripts/classroom/classroom.controller.js"></script>
+<script src="javascripts/classroom/classroom.module.js"></script>
+
+<!--<link rel="stylesheet" type="text/css" href="/easyrtc/easyrtc.css" />-->
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="javascripts/easyrtc.js"></script>
+    <script type="text/javascript" src="javascripts/easyrtcCall.js"></script>
+</head>
+<body onload="my_init()">
+<div class="container-fluid height-full" ng-app="classroomApp" ng-controller="classroomController">
+    {{hello}}
+    <div class="row height-full">
+        <% include partials/content/lesson.ejs %>
+        <% include partials/content/comms.ejs %>
+    </div>
+</div>
+<!-- <script>
+//     $(document).ready(function(){
+//         $('[data-toggle="popover"]').popover();
+//     });
+ </script> -->
+<!--<script src="/javascripts/scrollBottom.js"></script>-->
+<!--<script src="/javascripts/call-teacher.js"></script>-->
+<script src="/javascripts/testJS.js"></script>
+
+</body>
+</html>

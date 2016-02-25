@@ -22,13 +22,14 @@ var passportConfig = require('./auth/passport-config');
 passportConfig();
 
 mongoose.set('debug', true);
+
 console.log('mongoose debugging');
 mongoose.connect(config.mongoUri);
 // mongoose.connect("mongodb://localhost:27017/students");
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'public/views')); // (__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));

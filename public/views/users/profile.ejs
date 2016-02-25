@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <% include ../partials/template/head.ejs %>
+     <link rel="stylesheet" href="/stylesheets/linguafranca.css">
+     <link rel="stylesheet" href="/stylesheets/profile.css">
+     
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title><%= title %></title>
+  </head>
+
+  <body>
+    <!--<% include ../partials/template/sectionnav.ejs %>-->
+    <div class="container-fluid height-full">
+        <div class="row height-full">
+            <div class="col-xs-2 profile-dock">
+                <div class="row"> 
+                  <div class="col-xs-12 no-pad">
+                      <div class="card profile-card"> 
+                          <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+                          <div class="avatar">
+                              <img src="" alt="" />
+                          </div>
+                          <!--<div class="content half-pad-top">-->
+                              <!--<ul class="fa-ul">--> 
+                              <!--    <li><i class="fa-li fa fa-flag iconpad"></i>United States</li>-->
+                              <!--    <li><i class="fa-li fa fa-graduation-cap iconpad"></i>International Development</li>-->
+                              <!--</ul>-->
+                          <!--    <p>Felicity</p>-->
+                          <!--       <p><i class="fa fa-flag iconpad"></i>United States</p>-->
+                          <!--      <p><i class="fa fa-graduation-cap iconpad"></i>International Development</p>-->
+                          <!--      <p>5+ years of teaching experience both in the classroom and online.</p>-->
+                          <!--    <p><button type="button" class="btn btn-default" onclick="window.open('https://cl.linkedin.com/in/felicityforsyth')"><i class="fa fa-linkedin iconpad"></i>View Profile</button></p>-->
+                          <!--</div><!-- content --> 
+                      </div><!-- card -->
+                  </div><!-- col -->
+                 </div><!-- row -->
+                 <div class="row">
+                     <div class="col-xs-12 text-center pad-top user-info">
+                         <ul>
+                             <% if(firstName) { %>
+                                <li><%= firstName %></li>
+                            <% } %>
+                            <% if(email) { %>
+                                <li><%= email %></li>
+                            <% } %>
+                            <% if(timezone) { %>
+                                <li>Your timezone: <%= timezone %></li>
+                            <% } %>
+                            <% if(skype) { %>
+                                <li>Skype ID: <%= skype %></li>
+                            <% } %>
+                            <% if(credits != null) { %>
+                                <li class="pad-top">Credits: <%- credits %></li> 
+                                <a href="" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a>
+                                <a href="" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-gift"></span> Get FREE</a>       
+                            <% } %>
+                        </ul>
+                    </div><!-- col-->
+                </div><!-- row -->
+                <!--<div class="container-fluid">-->
+                <div class="row btn-bottom">
+                    <div class="col-xs-12">
+                        <!--<div class="btn-bottom">-->
+                            <a href="/users/profile/update" class="btn btn-default btn-block btn-xs"><span class="glyphicon glyphicon-edit"></span> Edit Profile</a>
+                            <a href="/users/logout" class="btn btn-default btn-block btn-xs"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                        <!--</div>-->
+                    </div><!-- col -->
+                </div><!-- row -->
+                
+            </div><!-- col profile dock -->
+            <div class="col-xs-10 col-xs-offset-2">
+                    <div class="row block-row-blue">
+                        <div class="col-xs-12 col-sm-10 col-sm-offset-1 word-list well box-shadow-2"> 
+                            <h1 class="text-center">Words</h1>
+                            <table class="table table-hover">
+                                <thead>
+                                  <tr>
+                                    <th>Word</th>
+                                    <th>Type</th>
+                                    <th>Example</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>acid</td>
+                                    <td>noun</td>
+                                    <td>Lemons and limes contain citric <strong>acid</strong>.</td>
+                                  </tr>
+                                  <tr>
+                                    <td>vehicle</td>
+                                    <td>noun</td>
+                                    <td>There would be less traffic if there were fewer <strong>vehicles</strong>.</td>
+                                  </tr>
+                                  <tr>
+                                    <td>assassinate</td>
+                                    <td>verb</td>
+                                    <td>The president was <strong>assassinated</strong> last week.</td>
+                                  </tr>
+                                  <tr>
+                                    <td>run</td>
+                                    <td>verb</td>
+                                    <td>He <strong>ran</strong> as fast as his feet could carry him.</td>
+                                  </tr>
+                                  <tr>
+                                    <td>stop</td>
+                                    <td>verb</td>
+                                    <td><strong>Stop!</strong> You are under arrest.</td>
+                                  </tr>
+                                  <tr>
+                                    <td>bladder</td>
+                                    <td>noun</td>
+                                    <td>He had to go to the bathroom because his <strong>bladder</strong> was full.</td>
+                                  </tr>
+                                  <tr>
+                                    <td>dispicable</td>
+                                    <td>adjective</td>
+                                    <td>The murderer was a <strong>dispicable</strong> person.</td>
+                                  </tr>
+                                  <tr>
+                                    <td>table</td>
+                                    <td>noun</td>
+                                    <td>Lets sit at the <strong>table</strong> for dinner.</td>
+                                  </tr>
+                                  <tr>
+                                    <td>information</td>
+                                    <td>noun</td>
+                                    <td>We have access to so much <strong>information</strong> on the internet.</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            <h2 class='text-center see-more'>See More</h2> 
+                        </div> <!-- col wordlist -->
+                    </div><!-- row -->    
+                </div><!-- col -->
+            <div class="col-xs-10 col-sm-offset-2"> 
+                <div class="row block-row-green"> 
+                        <div class="col-xs-12 col-sm-10 col-sm-offset-1 lesson-elect well box-shadow-2"> 
+                            <h1 class="text-center">Lessons</h1>
+                            <div class="row text-center">
+                                <div class="col-xs-3 lesson-card">
+                                    <h2>Travel</h2>
+                                    <!--<img src="/images/lessonthumbs/beach.jpg">-->
+                                </div>
+                                <div class="col-xs-3 lesson-card">
+                                    <h2>Work</h2>
+                                    <!--<img src="/images/lessonthumbs/city.jpg">-->
+                                </div>
+                                <div class="col-xs-3 lesson-card">
+                                    <h2>Sport</h2>
+                                    <!--<img src="/images/lessonthumbs/football.jpg">-->
+                                </div>
+                                <div class="col-xs-3 lesson-card">
+                                    <h2>Life</h2>
+                                    <!--<img src="/images/lessonthumbs/landscape.jpg">-->
+                                </div>
+                            </div> 
+                            <h2 class='text-center see-more'>See More</h2> 
+                        </div><!-- col well -->
+                    </div><!-- row -->
+                </div><!-- col lessons -->
+            <div class="col-xs-10 col-xs-offset-2"> 
+                <div class="row block-row-red">   
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 previous-lessons well box-shadow-2"> 
+                        <h1 class="text-center">Previous Lessons</h1>
+                        <h2 class='text-center see-more'>See More</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-10 col-xs-offset-2"> 
+                <div class="row block-row-gold">   
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 progress well box-shadow-2"> 
+                        <h1 class="text-center">Progress</h1>
+                        <h2 class='text-center see-more'>See More</h2>
+                    </div>
+                </div>
+            </div>
+        </div><!-- row -->
+            <img class="src-image resize-img"  src="/images/linguafranca/female.jpg" alt="random profile picture">
+
+    </div><!-- container -->
+     <% include ../partials/template/bootstrapincludes.ejs %>
+    <script src="/javascripts/stack-blur.js"></script>
+
+
+  </body>
+</html>

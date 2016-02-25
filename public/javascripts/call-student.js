@@ -5,14 +5,16 @@ navigator.msGetUserMedia);
 
 var conn;
 
-var peer = new Peer('Randomadfpovihq39',
-    { key: 'pju4scj78qepzaor',
-        debug: 3,
-        config: {'iceServers': [
-            { url: 'stun:stun.l.google.com:19302'},
-            { url: 'stun:stun1.l.google.com:19302'},
-            { url: 'turn:numb.viagenie.ca', username:"info@linguafrancaworld.com", credential:"4jTBNGy@p@mdEn"}
-        ]}});
+// var peer = new Peer('Randomadfpovihq39',
+//     { key: 'pju4scj78qepzaor',
+//         debug: 3,
+//         config: {'iceServers': [
+//             { url: 'stun:stun.l.google.com:19302'},
+//             { url: 'stun:stun1.l.google.com:19302'},
+//             { url: 'turn:numb.viagenie.ca', username:"info@linguafrancaworld.com", credential:"4jTBNGy@p@mdEn"}
+        // ]}});
+var peer = new Peer('Randomadfpovihq39', {host: 'mypeerserver.herokuapp.com/', port: 9000});
+
 
 // on open set peer id
 peer.on('open', function() {

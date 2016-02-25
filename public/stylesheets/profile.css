@@ -35,61 +35,63 @@ body {
     padding-bottom: 10px;
 } 
 
+/*MOVED TO BLOCKS.CSS*/
+
 /*.word-list, .lesson-elect, .previous-lessons {*/
-.well {
+/*.well {   */
     /*margin: 10px;*/
     /*margin-top: 10px;*/
     /*height: 50vh;*/
-    color:  #212121;
-    overflow: hidden;
+    /*color:  #212121;*/
+    /*overflow: hidden;*/
     /*background-color: #CFD8DC;*/ 
-    margin-top: 45px;
-    margin-bottom: 100px; 
-}
+    /*margin-top: 45px;*/
+    /*margin-bottom: 100px; */
+/*}*/
 
 
-.box-shadow-2 {
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
+/*.box-shadow-2 {*/
+/*    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);*/
+/*}*/
 
-.block-row-blue {
-    background: -webkit-gradient(linear, 0 100%, 0 0, from(#28ABE3), color-stop(140px, #28ABE3), color-stop(140px, #C4C4C4), color-stop(140px, #C4C4C4), to(#C4C4C4));
-    background: -webkit-linear-gradient(#28ABE3 0%, #28ABE3 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);
-    background: -moz-linear-gradient(#28ABE3 0%, #28ABE3 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);
-    background: -o-linear-gradient(#28ABE3 0%, #28ABE3 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);
-    background: linear-gradient(#28ABE3 0%, #28ABE3 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%); 
+/*.block-row-blue {*/
+/*    background: -webkit-gradient(linear, 0 100%, 0 0, from(#28ABE3), color-stop(140px, #28ABE3), color-stop(140px, #C4C4C4), color-stop(140px, #C4C4C4), to(#C4C4C4));*/
+/*    background: -webkit-linear-gradient(#28ABE3 0%, #28ABE3 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);*/
+/*    background: -moz-linear-gradient(#28ABE3 0%, #28ABE3 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);*/
+/*    background: -o-linear-gradient(#28ABE3 0%, #28ABE3 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);*/
+/*    background: linear-gradient(#28ABE3 0%, #28ABE3 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%); */
     /*background-color: #28ABE3; */
-}
+/*}*/
 
-.block-row-green {
-    background: -webkit-gradient(linear, 0 100%, 0 0, from(#1FDA9A), color-stop(140px, #1FDA9A), color-stop(140px, #C4C4C4), color-stop(140px, #C4C4C4), to(#C4C4C4));
-    background: -webkit-linear-gradient(#1FDA9A 0%, #1FDA9A 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);
-    background: -moz-linear-gradient(#1FDA9A 0%, #1FDA9A 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);
-    background: -o-linear-gradient(#1FDA9A 0%, #1FDA9A 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);
-    background: linear-gradient(#1FDA9A 0%, #1FDA9A 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%); 
+/*.block-row-green {*/
+/*    background: -webkit-gradient(linear, 0 100%, 0 0, from(#1FDA9A), color-stop(140px, #1FDA9A), color-stop(140px, #C4C4C4), color-stop(140px, #C4C4C4), to(#C4C4C4));*/
+/*    background: -webkit-linear-gradient(#1FDA9A 0%, #1FDA9A 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);*/
+/*    background: -moz-linear-gradient(#1FDA9A 0%, #1FDA9A 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);*/
+/*    background: -o-linear-gradient(#1FDA9A 0%, #1FDA9A 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);*/
+/*    background: linear-gradient(#1FDA9A 0%, #1FDA9A 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%); */
 
     /*background-color: #1FDA9A;*/
-} 
+/*} */
 
-.block-row-red {
-    background: -webkit-gradient(linear, 0 100%, 0 0, from(#DB3340), color-stop(140px, #DB3340), color-stop(140px, #C4C4C4), color-stop(140px, #C4C4C4), to(#C4C4C4));
-    background: -webkit-linear-gradient(#DB3340 0%, #DB3340 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);
-    background: -moz-linear-gradient(#DB3340 0%, #DB3340 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);
-    background: -o-linear-gradient(#DB3340 0%, #DB3340 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);
-    background: linear-gradient(#DB3340 0%, #DB3340 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);
+/*.block-row-red {*/
+/*    background: -webkit-gradient(linear, 0 100%, 0 0, from(#DB3340), color-stop(140px, #DB3340), color-stop(140px, #C4C4C4), color-stop(140px, #C4C4C4), to(#C4C4C4));*/
+/*    background: -webkit-linear-gradient(#DB3340 0%, #DB3340 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);*/
+/*    background: -moz-linear-gradient(#DB3340 0%, #DB3340 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);*/
+/*    background: -o-linear-gradient(#DB3340 0%, #DB3340 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);*/
+/*    background: linear-gradient(#DB3340 0%, #DB3340 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);*/
 
     /*background-color: #DB3340;*/
-}
+/*}*/
 
-.block-row-gold {
-    background: -webkit-gradient(linear, 0 100%, 0 0, from(#E8B71A), color-stop(140px, #E8B71A), color-stop(140px, #C4C4C4), color-stop(140px, #C4C4C4), to(#C4C4C4));
-    background: -webkit-linear-gradient(#E8B71A 0%, #E8B71A 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);
-    background: -moz-linear-gradient(#E8B71A 0%, #E8B71A 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);
-    background: -o-linear-gradient(#E8B71A 0%, #E8B71A 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);
-    background: linear-gradient(#E8B71A 0%, #E8B71A 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%); 
+/*.block-row-gold {*/
+/*    background: -webkit-gradient(linear, 0 100%, 0 0, from(#E8B71A), color-stop(140px, #E8B71A), color-stop(140px, #C4C4C4), color-stop(140px, #C4C4C4), to(#C4C4C4));*/
+/*    background: -webkit-linear-gradient(#E8B71A 0%, #E8B71A 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);*/
+/*    background: -moz-linear-gradient(#E8B71A 0%, #E8B71A 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);*/
+/*    background: -o-linear-gradient(#E8B71A 0%, #E8B71A 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%);*/
+/*    background: linear-gradient(#E8B71A 0%, #E8B71A 140px, #C4C4C4 140px, #C4C4C4 140px, #C4C4C4 100%); */
 
     /*background-color: #E8B71A;*/
-}
+/*}*/
 
 .lesson-elect .row {
     /*height: 150px;*/
@@ -228,6 +230,6 @@ body {
     height: 25vh;
 }  
 .profile-well {
-background: no-repeat url('/images/project/profile-v1.png');
+    background: no-repeat url('/images/project/profile-v1.png');
     background-size: contain;
 }
