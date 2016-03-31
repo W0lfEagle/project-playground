@@ -122,11 +122,16 @@ input.spmhidip {
 }
 
 .their-video, .my-video {
-  width: inherit;
+  width: inherit; 
   height: inherit;
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.their-video {
+  width: 100%    !important;
+  height: auto   !important;
 }
 
 /*center video in container MEDIA QUERY*/
@@ -149,6 +154,10 @@ input.spmhidip {
   position: absolute;
   bottom: 10px;
   right: 10px;
+}
+
+.btn-fab {
+  margin-left: 5px;
 }
 
 .this-message, .that-message {

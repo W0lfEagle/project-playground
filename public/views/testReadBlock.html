@@ -13,21 +13,30 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</div>-->
-<div class="container-fluid pad-top">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-            <div class="panel panel-success">
+<div class="container-fluid pad-top" id="reading" ng-controller="readBlockController">
+   
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <!--<div class="panel panel-success" custom-popover popover-html="Some Popover Text" popover-placement="right">-->
+            <div class="panel panel-success" href="javascript:;" popover>
               <div class="panel-heading">
                 <h1 class="panel-title">Reading</h3>
               </div>
               <div class="panel-body">
-                <highlight>
-                    <p>Oliver Curry studies evolution and the future, and he has an interesting idea about the future of the human race. He suggests that in 100,000 years, humankind will split into two species. In addition, one group will be the haves, and the other group will be the have nots.</p>
-                    <p>We will see some changes in the next 1,000 years. For example, humans will grow to 6-7 feet (182-213 centimeters). Humans will also live for about 120 years. And lastly, there won't be different races like today. The races will mix to produce people with similar, latte-colored skin.</p>
-                    <p>Unfortunately, there will also be negatives. People will lose social skills and empathy because they will use too much technology. Weak genes will spread and affect our whole species because new medicines will lower the mortality rate. Curry predicts this will happen 10,000 years from now.</p>
-                    <p>Further into the future, in the year 100,000, the healthy will only breed with one another, and so create a beautiful and intelligent group of people. The unhealthy will become short and ugly, and also be less smart. These are the haves and the have nots. In other words, humans will become rulers and slaves.</p>
+                  <h2>{{content[contentId - 1].title}}</h2>
+                 <highlight>
+                   <p ng-repeat="n in content[contentId - 1].data">
+                     {{n}}
+                   </p>
+                   <!--<p>The content Id is {{contentId}}</p>-->
+                   <!--{{content}}-->
+                    <!--<p>Oliver Curry studies evolution and the future, and he has an interesting idea about the future of the human race. He suggests that in 100,000 years, humankind will split into two species. In addition, one group will be the haves, and the other group will be the have nots.</p>-->
+                    <!--<p>We will see some changes in the next 1,000 years. For example, humans will grow to 6-7 feet (182-213 centimeters). Humans will also live for about 120 years. And lastly, there won't be different races like today. The races will mix to produce people with similar, latte-colored skin.</p>-->
+                    <!--<p>Unfortunately, there will also be negatives. People will lose social skills and empathy because they will use too much technology. Weak genes will spread and affect our whole species because new medicines will lower the mortality rate. Curry predicts this will happen 10,000 years from now.</p>-->
+                    <!--<p>Further into the future, in the year 100,000, the healthy will only breed with one another, and so create a beautiful and intelligent group of people. The unhealthy will become short and ugly, and also be less smart. These are the haves and the have nots. In other words, humans will become rulers and slaves.</p>-->
                 </highlight>
               </div>
+              <div id="wordlist" class="panel-footer">The words they selected are:</div>
             </div>
         </div>
-    </div>
 </div>
+

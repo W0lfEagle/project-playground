@@ -1,4 +1,4 @@
-<div class="col-sm-8 height-full lesson" id="lesson">
+<div class="col-sm-8 height-full lesson mCustomScrollbar" id="lesson">
     <!--<h1 class="text-center"> T </h1>-->
     <!--<a href="#" id="insert-module">Insert Module</a>-->
 
@@ -11,7 +11,7 @@
               <div class="panel-heading">
                 <h1 class="panel-title">Insert Block</h3>
               </div>
-              <div class="panel-body  insert-panel">
+              <div class="panel-body insert-panel mCustomScrollbar"> <!--  data-mcs-theme="minimal-dark" -->
                     <!--<button onclick="sendMessage('blockInsert', 'reading block')">Block insert</button>-->
                     <!--<a href="" onclick="sendMessage('blokInsert, 'reading block')" class="btn btn-raised btn-info">Insert</a>-->
                     <div class="row">
@@ -37,8 +37,8 @@
                                     <h2 class="panel-title">Vocabulary</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <p>A selection of vocabulary related to the world of engineering</p>
-                                    <button class="btn btn-flat btn-warning" onclick="sendMessage('blockInsert, 'vocab block')">Preview</button>
+                                    <p>{{content[2].title}}</p>
+                                    <button ng-click="insert(2)" onclick="sendMessage('blockInsert', 2)" class="btn btn-flat btn-warning">Preview</button>
                                 </div>
                             </div>
                         </div> <!-- col -->
@@ -48,8 +48,8 @@
                                     <h2 class="panel-title">Conversation</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <p>Questions about current affairs</p>
-                                    <button class="btn btn-flat btn-warning" onclick="sendMessage('blockInsert, 'conversation block')">Preview</button>
+                                    <p>{{content[1].title}}</p>
+                                    <button ng-click="insert(1)" onclick="sendMessage('blockInsert', 1)" class="btn btn-flat btn-warning">Preview</button>
                                 </div>
                             </div>
                         </div> <!-- col -->
@@ -59,8 +59,8 @@
                                     <h2 class="panel-title">Reading</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <p>The fall of the Soviet Empire</p>
-                                    <button class="btn btn-flat btn-warning" onclick="sendMessage('blockInsert, 'reading block')">Preview</button>
+                                    <p>{{content[0].title}}</p>
+                                    <button ng-click="insert(0)" onclick="sendMessage('blockInsert', 0)" class="btn btn-flat btn-warning">Preview</button>
                                 </div>
                             </div>
                         </div> <!-- col -->
@@ -72,8 +72,8 @@
                                     <h2 class="panel-title">Reading</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <p>Constructing the Eifle Tower</p>
-                                    <button class="btn btn-flat btn-warning" onclick="sendMessage('blockInsert, 'reading block')">Preview</button>
+                                    <p>{{content[3].title}}</p>
+                                    <button ng-click="insert(3)" onclick="sendMessage('blockInsert', 3)" class="btn btn-flat btn-warning">Preview</button>
                                 </div>
                             </div>
                         </div> <!-- col -->
@@ -83,8 +83,8 @@
                                     <h2 class="panel-title">Conversation</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <p>Questions about artificial intelligence</p>
-                                    <button class="btn btn-flat btn-warning" onclick="sendMessage('blockInsert, 'conversation block')">Preview</button>
+                                    <p>{{content[4].title}}</p>
+                                    <button ng-click="insert(4)" onclick="sendMessage('blockInsert', 4)" class="btn btn-flat btn-warning">Preview</button>
                                 </div>
                             </div>
                         </div> <!-- col -->
@@ -94,8 +94,8 @@
                                     <h2 class="panel-title">Vocabulary</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <p>A selection of vocabulary related to the world of aviation</p>
-                                    <button class="btn btn-flat btn-warning" onclick="sendMessage('blockInsert, 'vocab block')">Preview</button>
+                                    <p>{{content[5].title}}</p>
+                                    <button ng-click="insert(5)" onclick="sendMessage('blockInsert', 5)" class="btn btn-flat btn-warning">Preview</button>
                                 </div>
                             </div>
                         </div> <!-- col -->
@@ -106,8 +106,7 @@
     </div> <!-- container -->
     <!--</div>-->
     
-    <div ng-repeat="block in blocks">
-        <div ng-include="block.url"></div>
+    <div ng-repeat="block in blocks track by $index">
+        <div ng-include="block.url" ng-init="contentId = block.contentId"></div>
     </div>
-
 </div>

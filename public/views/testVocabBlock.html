@@ -65,13 +65,14 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</div>-->
-<div class="container-fluid pad-top">
+<div class="container-fluid pad-top" ng-controller="vocabBlockController">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1">
             <div class="panel panel-warning">
               <div class="panel-heading">
                 <h1 class="panel-title">Vocabulary</h3>
               </div>
               <div class="panel-body">
+                <h2>{{content[contentId - 1].title}}</h2>
                   <table class="table table-striped table-hover"> <!-- TODO populate with angular-->
                   <thead>
                     <tr>
@@ -81,51 +82,56 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>acid</td>
-                      <td>noun</td>
-                      <td>Lemons and limes contain citric <strong>acid</strong>.</td>
+                    <tr ng-repeat="item in content[contentId - 1].data">
+                      <td ng-repeat="(key,val) in item">
+                        {{val}}
+                      </td>
                     </tr>
-                    <tr>
-                      <td>vehicle</td>
-                      <td>noun</td>
-                      <td>There would be less traffic if there were fewer <strong>vehicles</strong>.</td>
-                    </tr>
-                    <tr>
-                      <td>assassinate</td>
-                      <td>verb</td>
-                      <td>The president was <strong>assassinated</strong> last week.</td>
-                    </tr>
-                    <tr>
-                      <td>run</td>
-                      <td>verb</td>
-                      <td>He <strong>ran</strong> as fast as his feet could carry him.</td>
-                    </tr>
-                    <tr>
-                      <td>stop</td>
-                      <td>verb</td>
-                      <td><strong>Stop!</strong> You are under arrest.</td>
-                    </tr>
-                    <tr>
-                      <td>bladder</td>
-                      <td>noun</td>
-                      <td>He had to go to the bathroom because his <strong>bladder</strong> was full.</td>
-                    </tr>
-                    <tr>
-                      <td>dispicable</td>
-                      <td>adjective</td>
-                      <td>The murderer was a <strong>dispicable</strong> person.</td>
-                    </tr>
-                    <tr>
-                      <td>table</td>
-                      <td>noun</td>
-                      <td>Lets sit at the <strong>table</strong> for dinner.</td>
-                    </tr>
-                    <tr>
-                      <td>information</td>
-                      <td>noun</td>
-                      <td>We have access to so much <strong>information</strong> on the internet.</td>
-                    </tr>
+                    <!--<tr>-->
+                    <!--  <td>acid</td>-->
+                    <!--  <td>noun</td>-->
+                    <!--  <td>Lemons and limes contain citric <strong>acid</strong>.</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                    <!--  <td>vehicle</td>-->
+                    <!--  <td>noun</td>-->
+                    <!--  <td>There would be less traffic if there were fewer <strong>vehicles</strong>.</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                    <!--  <td>assassinate</td>-->
+                    <!--  <td>verb</td>-->
+                    <!--  <td>The president was <strong>assassinated</strong> last week.</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                    <!--  <td>run</td>-->
+                    <!--  <td>verb</td>-->
+                    <!--  <td>He <strong>ran</strong> as fast as his feet could carry him.</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                    <!--  <td>stop</td>-->
+                    <!--  <td>verb</td>-->
+                    <!--  <td><strong>Stop!</strong> You are under arrest.</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                    <!--  <td>bladder</td>-->
+                    <!--  <td>noun</td>-->
+                    <!--  <td>He had to go to the bathroom because his <strong>bladder</strong> was full.</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                    <!--  <td>dispicable</td>-->
+                    <!--  <td>adjective</td>-->
+                    <!--  <td>The murderer was a <strong>dispicable</strong> person.</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                    <!--  <td>table</td>-->
+                    <!--  <td>noun</td>-->
+                    <!--  <td>Lets sit at the <strong>table</strong> for dinner.</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                    <!--  <td>information</td>-->
+                    <!--  <td>noun</td>-->
+                    <!--  <td>We have access to so much <strong>information</strong> on the internet.</td>-->
+                    <!--</tr>-->
                   </tbody>
                 </table>
               </div>
