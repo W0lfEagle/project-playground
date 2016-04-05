@@ -11,6 +11,8 @@ var http = require('http');
 var io      = require("socket.io");         // web socket external module
 var easyrtc = require("easyrtc");           // EasyRTC external module
 
+var completedLessonService = require('../services/completed-lesson-service');
+
 /**
  * Get port from environment and store in Express.
  */
@@ -113,6 +115,26 @@ easyrtc.setOption("appIceServers", myIceServers);
 
 easyrtc.setOption("logLevel", "debug");
 
+var onEasyrtcMsg = function(connectionObj, msg, socketCallback, next){
+    console.log("Message Received from client.", msg); // this should now execute
+    // easyrtc.events.emitDefault("easyrtcMsg", connectionObj, msg, socketCallback, next);
+      switch(msg.msgType){
+        case "completedLessonData":
+            console.log("Server recieved data: " + msg)
+            completedLessonService.addLesson(msg.msgData, function(err) {
+              if (err) {
+                console.log(err);
+                return;
+              }
+            });
+            break;
+        default:
+            easyrtc.events.emitDefault("easyrtcMsg", connectionObj, msg, socketCallback, next);
+            break;
+    }
+};
+easyrtc.events.on("easyrtcMsg", onEasyrtcMsg);
+
 // Overriding the default easyrtcAuth listener, only so we can directly access its callback
 easyrtc.events.on("easyrtcAuth", function(socket, easyrtcid, msg, socketCallback, callback) {
     easyrtc.events.defaultListeners.easyrtcAuth(socket, easyrtcid, msg, socketCallback, function(err, connectionObj){
@@ -134,6 +156,30 @@ easyrtc.events.on("roomJoin", function(connectionObj, roomName, roomParameter, c
     console.log("["+connectionObj.getEasyrtcid()+"] Credential retrieved!", connectionObj.getFieldValueSync("credential"));
     easyrtc.events.defaultListeners.roomJoin(connectionObj, roomName, roomParameter, callback);
 });
+
+// var onEasyrtcMsg = function(connectionObj, msg, socketCallback, next){
+//   console.log("Hello from the server");
+//     switch(msg.msgType){
+//         case "lockRoom":
+//             /* code to lock the room */
+//             socketCallback({msgType:'lockRoomACK', msgData:''}); //nice
+//             next(null);
+//             console.log("Server recieved data: " + msg)
+//             break;
+
+//         case "unlockRoom":
+//             /* code to unlock the room */
+//             socketCallback({msgType:'unlockRoomACK', msgData:''});
+//             next(null);
+//             break;
+
+//         default:
+//             easyrtc.events.emitDefault("easyrtcMsg", connectionObj, msg, socketCallback, next);
+//             break;
+//     }
+// };
+
+// easyrtc.events.on("easyrtcMsg", onEasyrtcMsg);
 
 
 // Start EasyRTC server

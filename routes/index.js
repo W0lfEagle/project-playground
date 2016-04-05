@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 // var nodemailer = require('nodemailer');
+// var completedLessonService = require('../services/completed-lesson-service');
 
 
 // var transporter = nodemailer.createTransport({
@@ -48,6 +49,24 @@ router.get('/testroom', function(req, res, next) {
     }
     res.render('testRoom', vm);
 });
+/*Teacher Room*/
+router.get('/teacherroom', function(req, res, next) {
+    var vm = {
+        title: 'Teacher Room',
+        page: 'teacherroom' 
+    }
+    res.render('teacherRoom', vm);
+});
+/*Student Room*/
+router.get('/studentroom', function(req, res, next) {
+    var vm = {
+        title: 'Student Room',
+        page: 'studentroom' 
+    }
+    res.render('studentRoom', vm);
+});
+
+
 
 // router.get('/linguafranca', function(req, res, next) {
 //     var vm = {

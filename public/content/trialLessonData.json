@@ -1,42 +1,31 @@
 [
-    {"content_type" : "reading", "id": 1, "title" : "Future Studies", "data" : [
-        "Oliver Curry studies evolution and the future, and he has an interesting idea about the future of the human race. He suggests that in 100,000 years, humankind will split into two species. In addition, one group will be the haves, and the other group will be the have nots.",
-        "We will see some changes in the next 1,000 years. For example, humans will grow to 6-7 feet (182-213 centimeters). Humans will also live for about 120 years. And lastly, there won't be different races like today. The races will mix to produce people with similar, latte-colored skin.",
-        "Unfortunately, there will also be negatives. People will lose social skills and empathy because they will use too much technology. Weak genes will spread and affect our whole species because new medicines will lower the mortality rate. Curry predicts this will happen 10,000 years from now.",
-        "Further into the future, in the year 100,000, the healthy will only breed with one another, and so create a beautiful and intelligent group of people. The unhealthy will become short and ugly, and also be less smart. These are the haves and the have nots. In other words, humans will become rulers and slaves."]
-    },
-    {"content_type" : "conversation", "id": 2, "title" : "Future Questions", "data" : [
+    {"content_type" : "conversation", "id": 1, "title" : "Future Questions", "data" : [
         "What do you think life will be like in the 31st century?",
         "Do you think technology will harm us?",
         "Do you think the human race will still be here in 100,000 years?",
         "Would you want to live in the 31st century?",
         "Does the theory sound more like science fiction or science fact?"]
     },
-    {"content_type" : "vocabulary", "id": 3, "title" : "Your selected Vocabulary", "data" : [
-        {"word": "Acid", "pos":"noun", "sentence":"Lemons and limes contain citric acid."},
-        {"word": "Vehicle", "pos":"noun", "sentence":"There would be less traffic if there were fewer vehicles."},
-        {"word": "Assasinate", "pos":"verb", "sentence":"The president was assassinated last week."},
-        {"word": "Run", "pos":"verb", "sentence":"He ran as fast as his feet could carry him."},
-        {"word": "Stop", "pos":"verb", "sentence":"Stop! You are under arrest."},
-        {"word": "Bladder", "pos":"noun", "sentence":"He had to go to the bathroom because his bladder was full."},
-        {"word": "Dispicable", "pos":"adjective", "sentence":"The murderer was a dispicable person."},
-        {"word": "Table", "pos":"noun", "sentence":"Let's sit at the table for dinner."},
-        {"word": "Information", "pos":"noun", "sentence":"We have access to so much information on the internet."}]
+    {"content_type" : "reading", "id": 2, "title" : "Future Studies", "data" : [
+        "Oliver Curry studies evolution and the future, and he has an interesting idea about the future of the human race. He suggests that in 100,000 years, humankind will split into two species. In addition, one group will be the haves, and the other group will be the have nots.",
+        "We will see some changes in the next 1,000 years. For example, humans will grow to 6-7 feet (182-213 centimeters). Humans will also live for about 120 years. And lastly, there won't be different races like today. The races will mix to produce people with similar, latte-colored skin.",
+        "Unfortunately, there will also be negatives. People will lose social skills and empathy because they will use too much technology. Weak genes will spread and affect our whole species because new medicines will lower the mortality rate. Curry predicts this will happen 10,000 years from now.",
+        "Further into the future, in the year 100,000, the healthy will only breed with one another, and so create a beautiful and intelligent group of people. The unhealthy will become short and ugly, and also be less smart. These are the haves and the have nots. In other words, humans will become rulers and slaves."]
     },
-    {"content_type" : "reading", "id": 4, "title" : "Compulsive Internet Disorder", "data" : [
+    {"content_type" : "reading", "id": 3, "title" : "Compulsive Internet Disorder", "data" : [
         "The Internet has become an important part of most people's lives because it's used for communication, information, and entertainment. Billions of people around the world send e-mails, chat online, read the news, and even play games. However, some people become addicted to the Internet. These people withdraw from the real world and spend more time alone.",
         "Some psychologists state that people who use the Internet too much already have a mental illness. In other words, they already have a gambling problem, or prefer to play games instead of work. However, some psychologists believe Internet addiction is real, and doctors should see it as a mental disease.",
         "South Korea thinks this Internet disorder is serious because children stop going to school to play games online. Even worse, some gamers have died after playing games online for many days without sleep!",
         "In South Korea, there are counseling centers and treatment programs at hospitals for people with an Internet addiction. A rehab center also recently opened too. At the center, as part of a twelve-day program, participants cannot use computers. They may only use a cell phone one hour per day. The program is so popular that people are turned away because there isn't any available space."]
     },
-    {"content_type" : "conversation", "id": 5, "title" : "Questions related to the internet article", "data" : [
+    {"content_type" : "conversation", "id": 4, "title" : "Questions related to the internet article", "data" : [
         "How many hours per day do you use the Internet? Do you think this is too much?",
         "Why do some people spend too much time on the computer and the Internet?",
         "Is Internet addiction a real illness? Why/not?",
         "Do you think you have an addition to the Internet? Why/not?",
         "What would you do if a family member spent days playing games on the computer?"]
     },
-    {"content_type" : "vocabulary", "id": 6, "title" : "Vocabulary from the internet article", "data" : [
+    {"content_type" : "vocabulary", "id": 5, "title" : "Vocabulary from the internet article", "data" : [
         {"word": "Withdraw", "pos":"verb", "sentence":"The old man will withdraw from the race because he is too tired."},
         {"word": "Prefer", "pos":"verb", "sentence":"I prefer Spain to Iceland because the weather is nicer."},
         {"word": "Disease", "pos":"noun", "sentence":"The boy went to hospital to get a cure for his disease."},

@@ -13,7 +13,7 @@ function my_init() {
 }
 
 
- function loggedInListener(roomName, otherPeers) {
+function loggedInListener(roomName, otherPeers) {
     var otherClientDiv = document.getElementById('otherClients');
     while (otherClientDiv.hasChildNodes()) {
         otherClientDiv.removeChild(otherClientDiv.lastChild);
@@ -57,6 +57,7 @@ function hangUp() {
 
 function sendMessage(messageType, messageData) {
     // easyrtc.sendDataWS( destination, messageType, messageData, ackHandler);
+    console.log("sending message");
     easyrtc.sendDataWS( theirID, messageType, messageData, function(ackMesg) {
          if( ackMesg.msgType === 'error' ) {
              console.log(ackMesg.msgData.errorText);
@@ -102,8 +103,8 @@ easyrtc.setPeerListener( function(sendersEasyrtcid, msgType, msgData, targeting)
         chatWindow.scrollTop = chatWindow.scrollHeight;
     }
     else if (msgType === 'blockInsert') {
-        console.log("Message recieved - insert block " + msgData);
-        $('#classroom').scope().remoteInsert(msgData);
+        console.log("Message recieved - insert block " + msgData.index + ' ' + msgData.type);
+        $('#classroom').scope().remoteInsert(msgData.index, msgData.type);
     }
     else if (msgType === 'wordSelect' ) {
         // alert("They just selected the word " + msgData);
@@ -113,6 +114,7 @@ easyrtc.setPeerListener( function(sendersEasyrtcid, msgType, msgData, targeting)
         span.innerHTML = msgData;
         var wordlist = document.getElementById('wordlist');
         wordlist.appendChild(span);
+        $('#classroom').scope().insertWord(msgData);
         // <span class="label label-default">Default</span>
     }
 });
@@ -120,3 +122,42 @@ easyrtc.setPeerListener( function(sendersEasyrtcid, msgType, msgData, targeting)
 // function testThings() {
 //     angular.element(document.getElementById('reading')).scope().testfunction('test');
 // }
+
+function disableCamera() {
+    easyrtc.enableCamera(false);
+//     var MediaStream = window.MediaStream;
+
+// if (typeof MediaStream === 'undefined' && typeof webkitMediaStream !== 'undefined') {
+//     MediaStream = webkitMediaStream;
+// }
+
+// /*global MediaStream:true */
+// if (typeof MediaStream !== 'undefined' && !('stop' in MediaStream.prototype)) {
+//     MediaStream.prototype.stop = function() {
+//         this.getAudioTracks().forEach(function(track) {
+//             track.stop();
+//         });
+
+//         this.getVideoTracks().forEach(function(track) {
+//             track.stop();
+//         });
+//     };
+// }
+    easyrtc.getLocalStream().getVideoTracks().forEach(function(track) {
+        track.stop()
+    });
+    // easyrtc.getLocalStream().getAudioTracks().forEach(function(track) {
+    //     track.stop()
+    // });
+}
+
+function enableCamera() {
+    // easyrtc.enableCamera(true);
+    easyrtc.initMediaSource(
+         function(mediastream){
+             easyrtc.setVideoObjectSrc( document.getElementById("self"), mediastream);
+         },
+         function(errorCode, errorText){
+              easyrtc.showError(errorCode, errorText);
+         });
+}

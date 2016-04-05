@@ -19,9 +19,9 @@ router.get('/create', function(req, res, next) {
   res.render('users/create', vm);
 });
 
-/* GET /users/create */
+/* POST /users/create */
 router.post('/create', function(req, res, next) {
-  // console.log(req.body);
+  console.log(req.body);
 
   userService.addUser(req.body, function(err) {
     if (err) {

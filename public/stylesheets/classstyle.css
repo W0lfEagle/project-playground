@@ -31,6 +31,10 @@ body {
 /*  text-decoration: none;*/
 /*}*/
 
+.blockSectionHeader {
+  text-align: center;
+}
+
 .panel h1 {
   /*font-family: 'Itim', cursive;*/
   /*font-weight: 400;*/

@@ -22,6 +22,10 @@ readBlockApp.directive('highlight', function($compile) {
           // console.log(word);
           sendMessage('wordSelect', word);
           popover(word);
+          console.log(scope.$parent.dynamicContent[0].data[0]);
+          var newWord = {word: word, pos: 'TODO', sentence: 'TODO'};
+          scope.$parent.dynamicContent[0].data.push(newWord);
+          scope.$parent.$apply();
         }
         var html = element.html().replace(new RegExp(escapeRegExp(word), 'g'), '<span class="highlight">'+word+'</span>'); //grap the element html and replace matched words with highlight class surrounding
 			  element.html(html);

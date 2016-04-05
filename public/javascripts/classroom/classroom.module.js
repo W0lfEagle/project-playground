@@ -37,7 +37,12 @@ var classroomApp = angular.module('classroomApp', ['ngRoute', 'readBlockApp', 'c
 //         $scope.waitForIt = myService.getHTML();
 // 	};
 // }]);
-classroomApp.controller('classroomController', ['$scope', '$http', function($scope, $http) {
+classroomApp.controller('classroomController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+  // $locationProvider.html5Mode(true);  // Nasty hack to get around locationProvider issue
+  $scope.currentPath = $location.absUrl().split('/');
+  $scope.currentPath = $scope.currentPath[$scope.currentPath.length - 1];
+  $scope.intro = true;
+  
   $scope.templates =
     [ { id: 1, name: 'Reading Block', url: '../views/testReadBlock.html'},
       { id: 2, name: 'Conversation Block', url: '../views/testConversationBlock.html'},
@@ -54,27 +59,65 @@ classroomApp.controller('classroomController', ['$scope', '$http', function($sco
           console.log("Failed to load content data\n" + data + "\n" + status + "\n" + error + "\n" + config);
       });
   
-  //completed blocks
+  $scope.dynamicContent = null;
+  $http.get('../content/dynamicLessonData.json')
+      .success(function(data) {
+          $scope.dynamicContent=data;
+      })
+      .error(function(data,status,error,config){
+          // $scope.content = [{heading:"Error",description:"Could not load json data"}];
+          console.log("Failed to load dynamic content data\n" + data + "\n" + status + "\n" + error + "\n" + config);
+      });
+  
+  //inserted blocks
   $scope.blocks = [];
-  $scope.insert = function(index) {
-    if( $scope.content[index].content_type == "reading" ) {
-      $scope.blocks = $scope.blocks.concat($scope.templates[0]);
-    }
-    else if( $scope.content[index].content_type == "conversation" ) {
-      $scope.blocks = $scope.blocks.concat($scope.templates[1]);
-    }
-    else if( $scope.content[index].content_type == "vocabulary" ) {
-      $scope.blocks = $scope.blocks.concat($scope.templates[2]);
-    }
-    $scope.blocks[$scope.blocks.length - 1].contentId = $scope.content[index].id;
-    console.log("Local insert function called " + index);
+  $scope.insert = function(index, type) {
+    $scope.localInsert(index, type);
+    var msg = {index: index, type: type}
+    sendMessage('blockInsert', msg);
   }
-  $scope.remoteInsert = function(index) {
-    $scope.insert(index);
+  $scope.remoteInsert = function(index, type) {
+    $scope.intro = false;
+    $scope.localInsert(index, type);
     $scope.$apply();
     console.log("Remote insert function called " + index);
   }
+  $scope.localInsert = function(index, type) {
+    if(type == 'static') {
+      if( $scope.content[index].content_type == "reading" ) {
+        $scope.blocks = $scope.blocks.concat($scope.templates[0]);
+      }
+      else if( $scope.content[index].content_type == "conversation" ) {
+        $scope.blocks = $scope.blocks.concat($scope.templates[1]);
+      }
+      else if( $scope.content[index].content_type == "vocabulary" ) {
+        $scope.blocks = $scope.blocks.concat($scope.templates[2]);
+      }
+      $scope.blocks[$scope.blocks.length - 1].contentId = {id: $scope.content[index].id, type: 'static'};
+      console.log("Local insert function called " + index);
+    }
+    else if(type == 'dynamic') {
+      if( $scope.dynamicContent[index].content_type == "reading" ) {
+        $scope.blocks = $scope.blocks.concat($scope.templates[0]);
+      }
+      else if( $scope.dynamicContent[index].content_type == "conversation" ) {
+        $scope.blocks = $scope.blocks.concat($scope.templates[1]);
+      }
+      else if( $scope.dynamicContent[index].content_type == "vocabulary" ) {
+        $scope.blocks = $scope.blocks.concat($scope.templates[2]);
+      }
+      $scope.blocks[$scope.blocks.length - 1].contentId = {id: $scope.dynamicContent[index].id, type: 'dynamic'};
+      console.log("Local insert function called " + index);
+    }
+  }
   
+  $scope.insertWord = function(word) {
+    var newWord = {word: word, pos: 'TODO', sentence: 'TODO'};
+    $scope.dynamicContent[0].data.push(newWord);
+    $scope.$apply();
+  }
+  
+  // console.log($location.path());
 }]);
 
 // classroomApp.directive('classroom', function() {

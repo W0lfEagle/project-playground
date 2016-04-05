@@ -5,9 +5,9 @@
                 <h1 class="panel-title">Conversation</h3>
               </div>
               <div class="panel-body">
-                <h2>{{content[contentId - 1].title}}</h2>
+                <h2>{{content[contentId.id - 1].title}}</h2>
                 <ol>
-                  <li ng-repeat="n in content[contentId - 1].data">
+                  <li ng-repeat="n in content[contentId.id - 1].data">
                      {{n}}
                    </li>
                 </ol>

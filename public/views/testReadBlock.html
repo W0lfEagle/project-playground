@@ -22,11 +22,12 @@
                 <h1 class="panel-title">Reading</h3>
               </div>
               <div class="panel-body">
-                  <h2>{{content[contentId - 1].title}}</h2>
+                  <h2>{{content[contentId.id - 1].title}}</h2>
                  <highlight>
-                   <p ng-repeat="n in content[contentId - 1].data">
+                   <p ng-repeat="n in content[contentId.id - 1].data">
                      {{n}}
                    </p>
+
                    <!--<p>The content Id is {{contentId}}</p>-->
                    <!--{{content}}-->
                     <!--<p>Oliver Curry studies evolution and the future, and he has an interesting idea about the future of the human race. He suggests that in 100,000 years, humankind will split into two species. In addition, one group will be the haves, and the other group will be the have nots.</p>-->

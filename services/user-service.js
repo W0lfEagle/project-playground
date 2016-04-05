@@ -12,7 +12,7 @@ exports.addUser = function(user, next) {
         password: hash,
         timezone: user.timezone,
         skype: user.skype
-    });
+      });
     
     newUser.save(function(err) {
         if (err) {

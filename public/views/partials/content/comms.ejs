@@ -17,16 +17,19 @@
                         <video id="self" class="my-video" muted="muted"></video>
                     </div>
                     <div class="video-buttons">
-                        <a href="" onclick="" class="btn btn-success btn-fab"><i class="material-icons">call</i></a>
-                        <a href="" onclick="hangUp()" class="btn btn-danger btn-fab"><i class="material-icons">call_end</i></a>
-                        <a href="" onclick="testThings()" class="btn btn-primary btn-fab"><i class="material-icons">build</i></a>
+                        <a ng-if="currentPath == 'teacherroom'" href="" onclick="" class="btn btn-success btn-fab"><i class="material-icons">call</i></a>
+                        <a ng-if="currentPath == 'teacherroom'" href="" onclick="hangUp()" class="btn btn-danger btn-fab"><i class="material-icons">call_end</i></a>
+                        <a ng-if="currentPath == 'teacherroom'" href="" onclick="testThings()" class="btn btn-primary btn-fab"><i class="material-icons">build</i></a>
+                        <!--<a class="btn btn-danger btn-fab" ng-class="{true: 'btn-success', false: 'btn-danger'}[!video.on]" ng-click="video.on = !video.on"><i class="material-icons">{{!video.on && 'videocam_off' || 'videocam'}}</i></a>-->
+                        <a href="" onclick="disableCamera()" class="btn btn-danger btn-fab"><i class="material-icons">videocam_off</i></a>
+                        <a href="" onclick="enableCamera()" class="btn btn-success btn-fab"><i class="material-icons">videocam</i></a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12 height-half chat pad-top" id="chat-window">
-                <div id="otherClients"> clients</div>
+                <div id="otherClients"> clients</div> <!-- Hiding this from the student causes communications to break -->
             </div>
             <div class="type-chat pull-right">
                 <input type="text" name="chat" class="form-control" id="chat" placeholder="Say something" maxlength="500">
