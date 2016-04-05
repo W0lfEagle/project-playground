@@ -24,8 +24,8 @@ passportConfig();
 mongoose.set('debug', true);
 
 console.log('mongoose debugging');
-// mongoose.connect(config.mongoUri);
-mongoose.connect(config.mongoCompletedLessonUri);
+mongoose.connect(config.mongoUri);
+// mongoose.connect(config.mongoCompletedLessonUri);
 // mongoose.createConnection(config.mongoUri);
 // mongoose.createConnection(config.mongoCompletedLessonUri);
 // mongoose.connect("mongodb://localhost:27017/students");
