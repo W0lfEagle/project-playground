@@ -1,6 +1,6 @@
 'use strict';
 
-var readBlockApp = angular.module('readBlockApp', ['ngRoute', 'ngResource']);
+var readBlockApp = angular.module('readBlockApp', ['ngRoute']);
 
 //TODO remove highlight if re-selected / send word to database / tool-tip dictionary definition
 readBlockApp.directive('highlight', function($compile) {
