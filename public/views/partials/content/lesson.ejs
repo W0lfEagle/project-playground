@@ -45,6 +45,15 @@
                                     <button ng-click="insert($index, 'static')" class="btn btn-flat btn-warning">Preview</button>
                                 </div>
                             </div>
+                            <div ng-if="block.content_type == 'video'" class="panel panel-danger">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Video</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <p>{{block.title}}</p>
+                                    <button ng-click="insert($index, 'static')" class="btn btn-flat btn-warning">Preview</button>
+                                </div>
+                            </div>
                         </div> <!-- ng-repeat col -->
                     </div> <!-- row -->
                     <hr>
@@ -76,6 +85,15 @@
                                 <div class="panel-body">
                                     <p>{{block.title}}</p>
                                     <p>You have <strong>{{block.data.length}}</strong> words selected</p>
+                                    <button ng-click="insert($index, 'dynamic')" class="btn btn-flat btn-warning">Preview</button>
+                                </div>
+                            </div>
+                            <div ng-if="block.content_type == 'image'" class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Images</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <p>{{block.title}}</p>
                                     <button ng-click="insert($index, 'dynamic')" class="btn btn-flat btn-warning">Preview</button>
                                 </div>
                             </div>

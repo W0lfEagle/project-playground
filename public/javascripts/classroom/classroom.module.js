@@ -1,6 +1,6 @@
 'use strict';
 
-var classroomApp = angular.module('classroomApp', ['ngRoute', 'readBlockApp', 'convoBlockApp', 'vocabBlockApp']);
+var classroomApp = angular.module('classroomApp', ['ngRoute', 'ngResource', 'readBlockApp', 'convoBlockApp', 'vocabBlockApp', 'videoBlockApp']);
 
 // classroomApp.service('myService', function($http) {
 //     return {
@@ -42,11 +42,15 @@ classroomApp.controller('classroomController', ['$scope', '$http', '$location', 
   $scope.currentPath = $location.absUrl().split('/');
   $scope.currentPath = $scope.currentPath[$scope.currentPath.length - 1];
   $scope.intro = true;
+  $scope.maxDynVocab = false;
+  $scope.maxImage = false;
   
   $scope.templates =
-    [ { id: 1, name: 'Reading Block', url: '../views/testReadBlock.html'},
-      { id: 2, name: 'Conversation Block', url: '../views/testConversationBlock.html'},
-      { id: 3, name: 'Vocabulary Block', url: '../views/testVocabBlock.html'}];
+    [ { id: 1, name: 'Reading Block', url: '../views/partials/lesson blocks/readingBlock.html'},
+      { id: 2, name: 'Conversation Block', url: '../views/partials/lesson blocks/conversationBlock.html'},
+      { id: 3, name: 'Vocabulary Block', url: '../views/partials/lesson blocks/vocabularyBlock.html'},
+      { id: 4, name: 'Video Block', url: '../views/partials/lesson blocks/videoBlock.html'},
+      { id: 5, name: 'Image Block', url: '../views/partials/lesson blocks/imageBlock.html'}];
   $scope.template = $scope.templates[0];
   
   $scope.content = null;
@@ -71,6 +75,8 @@ classroomApp.controller('classroomController', ['$scope', '$http', '$location', 
   
   //inserted blocks
   $scope.blocks = [];
+  // $scope.blocks = $scope.blocks.concat($scope.templates[0]);
+  // $scope.blocks[0].contentId = {id: $scope.content[1].id, type: 'static'};
   $scope.insert = function(index, type) {
     $scope.localInsert(index, type);
     var msg = {index: index, type: type}
@@ -93,18 +99,26 @@ classroomApp.controller('classroomController', ['$scope', '$http', '$location', 
       else if( $scope.content[index].content_type == "vocabulary" ) {
         $scope.blocks = $scope.blocks.concat($scope.templates[2]);
       }
+      else if( $scope.content[index].content_type == "video" ) {
+        $scope.blocks = $scope.blocks.concat($scope.templates[3]);
+      }
       $scope.blocks[$scope.blocks.length - 1].contentId = {id: $scope.content[index].id, type: 'static'};
       console.log("Local insert function called " + index);
     }
     else if(type == 'dynamic') {
-      if( $scope.dynamicContent[index].content_type == "reading" ) {
-        $scope.blocks = $scope.blocks.concat($scope.templates[0]);
-      }
-      else if( $scope.dynamicContent[index].content_type == "conversation" ) {
-        $scope.blocks = $scope.blocks.concat($scope.templates[1]);
-      }
-      else if( $scope.dynamicContent[index].content_type == "vocabulary" ) {
+      // if( $scope.dynamicContent[index].content_type == "reading" ) {
+      //   $scope.blocks = $scope.blocks.concat($scope.templates[0]);
+      // }
+      // else if( $scope.dynamicContent[index].content_type == "conversation" ) {
+      //   $scope.blocks = $scope.blocks.concat($scope.templates[1]);
+      // }
+      if( $scope.dynamicContent[index].content_type == "vocabulary" && $scope.maxDynVocab == false) {
         $scope.blocks = $scope.blocks.concat($scope.templates[2]);
+        $scope.maxDynVocab = true;
+      }
+      else if( $scope.dynamicContent[index].content_type == "image" && $scope.maxImage == false) {
+        $scope.blocks = $scope.blocks.concat($scope.templates[4]);
+        $scope.maxImage = true;
       }
       $scope.blocks[$scope.blocks.length - 1].contentId = {id: $scope.dynamicContent[index].id, type: 'dynamic'};
       console.log("Local insert function called " + index);

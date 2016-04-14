@@ -217,3 +217,57 @@ input.spmhidip {
 	background-color:	rgba(243,243,21,0.4);
 	font-weight:		bold;
 }
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+}
+ 
+.video-container iframe,
+.video-container object,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* make modal larger */
+
+/*.modal {*/
+/*  width: 700px*/
+/*}*/
+
+
+/* put the categories in two columns */
+
+/*#categories ul {*/
+/*  -moz-column-count: 2;*/
+/*  -webkit-column-count: 2;*/
+/*  column-count: 2;*/
+/*}*/
+
+
+/* make the thumbnail grid pretty */
+
+/*.thumbnails {*/
+/*  text-align: justify;*/
+/*}*/
+
+/*.thumbnails li {*/
+/*  height: 180px;*/
+/*  display: inline-block;*/
+/*  float: none;*/
+/*}*/
+
+.image-results {
+  list-style: none;
+  /*max-height: 200px;*/
+  height: 180px;
+}
+
+#image-block .panel-body {
+  min-height: 350px;
+}

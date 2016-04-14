@@ -1,3 +1,4 @@
 [
-    {"content_type" : "vocabulary", "id": 1, "title" : "Your selected Vocabulary", "data" : []}
+    {"content_type" : "vocabulary", "id": 1, "title" : "Your selected Vocabulary", "data" : []},
+    {"content_type" : "image", "id": 2, "title" : "Pictures help visual learners", "data" : []}
 ]

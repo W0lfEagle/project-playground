@@ -1,4 +1,5 @@
 var theirID;
+// var imageSearch = "";
 
 function my_init() {
      easyrtc.setRoomOccupantListener( loggedInListener);
@@ -58,6 +59,10 @@ function hangUp() {
 function sendMessage(messageType, messageData) {
     // easyrtc.sendDataWS( destination, messageType, messageData, ackHandler);
     console.log("sending message");
+    if(messageType == 'setImages') {
+        console.log("setting image search query");
+        messageData = $('.search-query').val();
+    }
     easyrtc.sendDataWS( theirID, messageType, messageData, function(ackMesg) {
          if( ackMesg.msgType === 'error' ) {
              console.log(ackMesg.msgData.errorText);
@@ -116,6 +121,25 @@ easyrtc.setPeerListener( function(sendersEasyrtcid, msgType, msgData, targeting)
         wordlist.appendChild(span);
         $('#classroom').scope().insertWord(msgData);
         // <span class="label label-default">Default</span>
+    }
+    else if (msgType === 'remoteControl') {
+        switch (msgData) {
+            case 'stopVideo':
+                stopVideo();
+                break;
+            case 'playVideo':
+                playVideo();
+                break;
+            case 'pauseVideo':
+                pauseVideo();
+                break;
+            default:
+                // break;
+        }
+    }
+    else if (msgType === 'setImages') {
+        console.log("image search term is: " + msgData);
+        setImages(msgData);
     }
 });
 
