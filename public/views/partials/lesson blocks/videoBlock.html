@@ -1,0 +1,28 @@
+<div class="container-fluid pad-top">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <div class="panel panel-danger" id="video-block">
+              <div class="panel-heading">
+                <h1 class="panel-title">Video</h3>
+              </div>
+              <div class="panel-body">
+                <!--<h2>{{content[contentId.id - 1].title}}</h2>-->
+                <div class="video-container">
+                     <!--<iframe src="https://www.youtube.com/embed/Vx0Z6LplaMU" frameborder="0" width="560" height="315"></iframe>-->
+                     <div id="player"></div>
+                </div>
+                <loadvideo>
+                    <!-- setupVideo( content[contentId.id - 1].data.videoId ); -->
+                 </loadvideo>
+                <!--<p>Video is {{content[contentId.id - 1].data.videoId}}</p>-->
+                <div ng-if="currentPath == 'teacherroom'">
+                    <h4>Student sync controls</h4>
+                    <!--<button onclick="setupVideo( 'Vx0Z6LplaMU' )" class="btn btn-flat btn-default">Load Video</button>-->
+                    <button onclick="stopVideo(); sendMessage('remoteControl', 'stopVideo')" class="btn btn-flat btn-danger">Stop</button>
+                    <button onclick="playVideo(); sendMessage('remoteControl', 'playVideo')" class="btn btn-flat btn-success">Start</button>
+                    <button onclick="pauseVideo(); sendMessage('remoteControl', 'pauseVideo')" class="btn btn-flat btn-warning">Pause</button>
+                </<div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>

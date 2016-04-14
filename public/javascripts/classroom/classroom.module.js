@@ -1,6 +1,6 @@
 'use strict';
 
-var classroomApp = angular.module('classroomApp', ['ngRoute', 'ngResource', 'readBlockApp', 'convoBlockApp', 'vocabBlockApp', 'videoBlockApp']);
+var classroomApp = angular.module('classroomApp', ['ngRoute', 'readBlockApp', 'convoBlockApp', 'vocabBlockApp', 'videoBlockApp']);
 
 // classroomApp.service('myService', function($http) {
 //     return {

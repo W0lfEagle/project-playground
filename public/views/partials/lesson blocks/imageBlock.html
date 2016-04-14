@@ -1,0 +1,64 @@
+<div class="container-fluid pad-top">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+        <div class="panel panel-default" id="image-block">
+            <div class="panel-heading">
+                <h1 class="panel-title">Images</h3>
+            </div>
+            <div class="panel-body">
+            
+                <div id="search-form"> <!-- class="modal hide fade" -->
+                  <!--<div class="modal-header">-->
+                  <!--  <h3>Find an Image</h3>-->
+                  <!--</div>-->
+                  <!--<div class="modal-body">-->
+                    <form class="form-search" ng-show="currentPath == 'teacherroom'">
+                        <input type="text" class="search-query span4" placeholder="Show your student some pictures...">
+                        <button id="image-search-submit" type="submit" class="btn btn-primary">Search</button>
+                        <button onclick="sendMessage('setImages', '')" class="btn btn-flat btn-warning">Send</button>
+                    </form>
+                    <!-- this div will be populated with categories -->
+                    <!--<div id="categories">-->
+                    <!--  <h3>or Browse by Category</h3>-->
+                    <!--  <div class="well">-->
+                    <!--    <ul></ul>-->
+                    <!--  </div>-->
+                    <!--</div>-->
+                
+                    <!-- this div will be populated with search results -->
+                    <div id="results-holder"> <!-- class="well hide" -->
+                      <ul class="thumbnails" id="results">
+                          <h2 class="text-center">Images will appear here.</h2>
+                      </ul>
+                    </div>
+                  <!--</div>-->
+                  <!--<div class="modal-footer">-->
+                    <!--<a href="" id="category-link" class="pull-left hide">&larr; browse by category</a>-->
+                    <!--<a href="http://www.bigstockphoto.com"><img src="//www.bigstockphoto.com/images/bigstock-black-medium.png" alt="Bigstock"></a>-->
+                  <!--</div>-->
+                </div>
+                
+                <!-- search results item template -->
+                <ul class="item-template hide">
+                  <li class="col-sm-4 image-results">
+                    <div class="thumbnail"><img></div>
+                  </li>
+                </ul>
+                
+                <!-- image detail template -->
+                <!--<div class="detail-template"> <!-- modal hide fade -->
+                  <!--<div class="modal-header">-->
+                <!--    <button type="button" class="close" data-dismiss="modal">×</button>-->
+                <!--    <h3></h3>-->
+                  <!--</div>-->
+                  <!--<div class="modal-body">-->
+                <!--    <img>-->
+                  <!--</div>-->
+                  <!--<div class="modal-footer">-->
+                <!--    <a href="#" class="btn" data-dismiss="modal">Close</a>-->
+                <!--    <a href="#" class="btn btn-primary">Select this image</a>-->
+                  <!--</div>-->
+                <!--</div>-->
+            </div>  <!-- panel body -->
+        </div><!-- container -->
+    </div><!-- col -->
+</div><!-- panel -->
