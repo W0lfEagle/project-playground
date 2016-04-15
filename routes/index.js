@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var restrict = require('../auth/classroomRestrict');
+var passport = require('passport');
+var config = require('../config');
 // var nodemailer = require('nodemailer');
 // var completedLessonService = require('../services/completed-lesson-service');
 
@@ -25,57 +28,46 @@ router.get('/', function(req, res, next) {
     res.render('linguafranca', vm);
 });
 
-/*Classroom*/
-router.get('/classroom', function(req, res, next) {
-    var vm = {
-        title: 'The Classroom',
-        page: 'classroom' 
+router.get('/classroomlogin', function(req, res, next) {
+    if (req.user) {
+        return res.redirect('/studentroom'); // TODO redirect teachers to the teacherRoom
     }
-    res.render('classroom', vm);
-});
-/*Student classroom*/
-router.get('/classroom-student', function(req, res, next) {
     var vm = {
-        title: 'Student Classroom',
-        page: 'student classroom' 
+        title: 'Login',
+        error: req.flash('error'),
+        page: 'login' 
     }
-    res.render('classroom-student', vm);
-});
-/*Test Room*/
-router.get('/testroom', function(req, res, next) {
-    var vm = {
-        title: 'Testing Room',
-        page: 'testroom' 
-    }
-    res.render('testRoom', vm);
+    res.render('users/login', vm);
 });
 
+router.post('/classroomlogin', function(req, res, next) {
+    if (req.body.rememberMe) {
+      req.session.cookie.maxAge = config.cookieMaxAge;
+    }
+    next();
+  },
+  passport.authenticate('local', {
+    failureRedirect: '/', 
+    successRedirect: '/studentroom',
+    failureFlash: 'Invalid credentials'
+}));
+
 /*Teacher Room*/
-router.get('/teacherroom', function(req, res, next) {
+router.get('/teacherroom', restrict, function(req, res, next) {
     var vm = {
         title: 'Teacher Room',
         page: 'teacherroom' 
     }
-    res.render('teacherRoom', vm);
+    res.render('classroom', vm); // Both the student and the teacher rooms are served with the same 'classroom.ejs' file
 });
 /*Student Room*/
-router.get('/studentroom', function(req, res, next) {
+router.get('/studentroom', restrict, function(req, res, next) {
     var vm = {
         title: 'Student Room',
         page: 'studentroom' 
     }
-    res.render('studentRoom', vm);
+    res.render('classroom', vm);
 });
-
-
-
-// router.get('/linguafranca', function(req, res, next) {
-//     var vm = {
-//         title: 'Lingua Franca World',
-//         home: true
-//     };
-//     res.render('linguafranca', vm)
-// });
 
 router.post('/', function(req, res, next) {
    // Email to student / email to info with student email address

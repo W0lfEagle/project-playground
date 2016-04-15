@@ -1,4 +1,4 @@
-var lessonId = 2349857;
+var lessonId = 2349857; // temporary solution only allows one lesson to be added - set randomly or increment at lesson start
 var studentId = 12390846;
 var studentVocab = {"word": "hello", "sentence": "Hello my pretty."};
 var lessonVocab = {"word": "rabbit", "sentence": "Look at the pretty rabbit."};

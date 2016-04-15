@@ -1,44 +1,16 @@
 // change to your account id at bigstock.com/partners
-var account_id = '274212';
-var selected_category, search_term, page, max_page, jsonp_happening; //, infinite_scrol
-var limit = "&limit=9";
+var account_id = '274212'; // TODO keep secret
+var selected_category, search_term, page, max_page, jsonp_happening;
+var limit = 9; // limit number of search results, 3x3
 
 $(function() {
-    
-    // console.log("doing image things");
-
-  // open search modal on page load
-//   $("#search-form").modal({
-//     backdrop: 'static'
-//   });
-
-  // populate the categories
-//   $.getJSON("https://api.bigstockphoto.com/2/" + account_id + "/categories/?callback=?", function(data) {
-//     if (data && data.data) {
-//       $.each(data.data, function(i, v) {
-//         if (v.name == "Sexual") {
-//           return;
-//         }
-//         $("#categories ul").append("<li><a href='#'>" + v.name + "</a></li>");
-//       });
-//     }
-//   });
-
-  // when the user clicks on a category
-//   $("#categories").on("click", "a", function(e) {
-//     selected_category = $(this).text();
-//     $(".form-search").trigger("submit", {
-//       category: true
-//     });
-//   });
-
   // show a loading message when the search button is clicked
   $("html").on("submit", ".form-search", function(e, val) {
     page = 1;
     
     var results = $("#results");
     results.html("")
-    results.append("<li id=\"loading\"><span class=\"label\">Loading...</span></li>");
+    results.append("<span id=\"loading\" class=\"label\">Loading...</span>");
     var val = val || {};
 
     //check if the user selected a category or did a keyword search
@@ -53,27 +25,11 @@ $(function() {
     $("html").trigger("bigstock_search", {
       q: search_term
     });
-    $("#categories").hide();
+    // $("#categories").hide();
     $("#results-holder").show('medium');
-    $("#category-link").show();
+    // $("#category-link").show();
     e.preventDefault();
   })
-
-  // infinite scroll
-//   infinite_scroll = setInterval(function() {
-//     var offset = $("#results li:last").offset();
-
-//     if (offset && offset.top < 1000 && !jsonp_happening && page < max_page && $("#results-holder").is(":visible")) {
-//       page++;
-//       $("html").trigger("bigstock_search", {
-//         q: search_term,
-//         category: selected_category,
-//         page: page
-//       })
-//     }
-
-//   }, 100);
-
 });
 
 // populate the search results
@@ -90,7 +46,7 @@ $("html").on("bigstock_search", function(e, val) {
     params.q = val.q;
     params.page = val.page;
 
-    $.getJSON("https://api.bigstockphoto.com/2/" + account_id + "/search/?callback=?" + limit, params, function (data) {
+    $.getJSON("https://api.bigstockphoto.com/2/" + account_id + "/search/?callback=?&limit=" + limit, params, function (data) {
       results.find("#loading").remove();
       results.find("#oops").remove();
       
@@ -111,34 +67,9 @@ $("html").on("bigstock_search", function(e, val) {
   }
 })
 
-// when a user clicks on a thumbnail
-// $("#results").on("click", "a", function(e) {
-//   $.getJSON("https://api.bigstockphoto.com/2/" + account_id + "/image/" + $(this).attr("href").substring(1) + "/?callback=?", function(data) {
-//     if (data && data.data && data.data.image) {
-//       var detail_template = $(".detail-template");
-//       detail_template.find("img").attr("src", data.data.image.preview.url);
-//       detail_template.find("h3").html(data.data.image.title);
-//       $(".detail-template").modal({
-//         backdrop: false
-//       });
-//       e.preventDefault();
-//     }
-//   });
-// });
-
-// when a user clicks on the "select this image" button
-// $(".detail-template").on("click", ".btn-primary", function(e) {
-//   alert('Here you will need server-side code to purchase and download the un-watermarked image. See the documentation at http://bigstock.com/partners/')
-// });
-
-// when a user clicks "browse by category"
-// $("#category-link").click(function(e) {
-//   $("#results-holder, #category-link").hide();
-//   $("#categories").show('medium');
-//   e.preventDefault();
-// });
-
+// function to be called remotely by teacher side  
+// no guarantee that student will recieve same search results
 function setImages(search_term) {
-    $('.search-query').val(search_term);
-    $('#image-search-submit').click();
+    $('.search-query').val(search_term); // set the search query in the hidden search form field
+    $('#image-search-submit').click(); // emulate click to initiate search functions and API call
 }

@@ -2,7 +2,9 @@
 
 var readBlockApp = angular.module('readBlockApp', ['ngRoute']);
 
-//TODO remove highlight if re-selected / send word to database / tool-tip dictionary definition
+//TODO remove highlight if re-selected
+// Highlight directive can be added to any element using the <highlight></highlight> element tags
+// listens for a double click, searches element for matching words and surrounds with highlight class
 readBlockApp.directive('highlight', function($compile) {
   function escapeRegExp(str) { //Use regExp to find all matching words
     return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
@@ -19,84 +21,48 @@ readBlockApp.directive('highlight', function($compile) {
         var range = window.getSelection() || document.getSelection() || document.selection.createRange();
         var word = range.toString().trim();
         scope.word = word;
-        if(word !== '') {
+        var exclude = ['', ' ', ',', '.', '(', ')', '!', '?'];
+        if(!((exclude.indexOf(word) > -1))) {
           // console.log(word);
           sendMessage('wordSelect', word);
           // popover(word);
-          // console.log(scope.$parent.dynamicContent[0].data[0]);
-          var newWord = {word: word, pos: 'TODO', sentence: 'TODO'};
-          scope.$parent.dynamicContent[0].data.push(newWord);
           scope.$parent.$apply();
-          // getTranslation(word);
+          var html = element.html().replace(new RegExp(escapeRegExp(word), 'g'), '<span class="highlight">'+word+'</span>'); //grab the element html and replace matched words with highlight class surrounding
+			    element.html(html);
+          e.stopPropagation();
         }
-        var html = element.html().replace(new RegExp(escapeRegExp(word), 'g'), '<span class="highlight">'+word+'</span>'); //grap the element html and replace matched words with highlight class surrounding
-			  element.html(html);
-        e.stopPropagation();
-        // scope.control.remoteHighlight = function() {
-        //   console.log("Directive method called from controller");
-        // }
-        
-        // function popover(word) {
-        //   console.log("putting the word " + word + " in the popover");
-        //   scope.$apply(function () { // This wraps the changes.
-        //     $(element).popover({
-        //       trigger: 'hover',
-        //       html: true,
-        //       content: $compile('<p>'+word+'<p>')(scope)
-        //     });
-        //   });
-        // }
       });
     }
   }
 });
 
+// dictionary directive takes care of getting pos and translations from Yandex API and updating the scope as required
 readBlockApp.directive('dictionary', ['$http', function($http) {
   return {
     restrict: 'A',
     link: function(scope, element, attrs) {
-      // scope.word = "Hello";
-      // scope.wordType = "word type";
-      // scope.get = function(){
-      // element.on('dblclick', function(e) {
+      //List of available language translations from English
       scope.langOptions = [{ name: "Spanish", code: "es" }, { name: "Hungarian", code: "hu" }, { name: "Czech", code: "cs" }, { name: "Danish", code: "da" }, { name: "German", code: "de" }, { name: "Greek", code: "el" }, { name: "Estonian", code: "et" }, { name: "Finish", code: "fi" }, { name: "French", code: "fr" }, { name: "Italian", code: "it" }, { name: "Lithuanian", code: "lt" }, { name: "Latvian", code: "lv" }, { name: "Dutch", code: "nl" }, { name: "Norwegian", code: "no" }, { name: "Portuguese", code: "pt" }, { name: "Russian", code: "ru" }, { name: "Slovakian", code: "sk" }, { name: "Swedish", code: "sv" }, { name: "Turkish", code: "tr" }, { name: "Ukranian", code: "uk" }];
-      scope.destLang = scope.langOptions[0];
+      scope.destLang = scope.langOptions[0]; // set default to Spanish
       
+      // watch the 'word' set by the highlight directive for changes 
       scope.$parent.$watch('word', function (newWord) {
-                    //do something with the new Time
         console.log("The directive is being called again with " + newWord);
         var destLang = scope.destLang.code;
-        var word = scope.$parent.word;
-          // $http.get("https://hablaa.com/hs/translation/" + word + "/eng-spa/").then(function(response) {
-          //           scope.type = response.data;
-          //           // scope.translations = [];
-          // });
-          // $http({ method: 'GET', url: 'https://hablaa.com/hs/translation/" + word + "/eng-spa/' }).
-          //   success(function (data, status, headers, config) {
-          //     scope.type = data;
-          //     // ...
-          //   }).
-          //   error(function (data, status, headers, config) {
-          //     // ...
-          // });
-        // };
-        scope.translations = [];
+        var wordType = "";
+        scope.translations = []; // store list of translations
         console.log("Getting definintion");
-        // var Definition = $resource("https://hablaa.com/hs/translation/" + word + "/eng-spa/");
-        // var Definition = $resource("https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key=dict.1.1.20160414T182102Z.74d50fe4fb0fb84f.cd90aa001917f7c3f8ee38ff0c7655da1b8034f0&lang=en-es&text=" + word);
-        // scope.wordType = Definition.;
-        // var def = Definition.get(function() {
-        //   // user.abc = true;
-        //   // user.$save();
-        //   scope.wordType = def;
-        // });
+        
+        scope.wordType = "searching...";
+        
         if(destLang != "hu") {
-          $http({ method: 'GET', url: 'https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key=dict.1.1.20160414T182102Z.74d50fe4fb0fb84f.cd90aa001917f7c3f8ee38ff0c7655da1b8034f0&lang=en-' + destLang + '&text=' + word + "&flags=4" }).
+          $http({ method: 'GET', url: 'https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key=dict.1.1.20160414T182102Z.74d50fe4fb0fb84f.cd90aa001917f7c3f8ee38ff0c7655da1b8034f0&lang=en-' + destLang + '&text=' + newWord + "&flags=4" }).
               success(function (data, status, headers, config) {
                 
                 if(data.def.length > 0) {
                   console.log(data);
-                  scope.wordType = data.def[0].pos;
+                  wordType = data.def[0].pos;
+                  addWord();
                   scope.translations = scope.translations.concat(data.def[0].tr[0].text);
                   // console.log(data.def[0].tr[0].text);
                   if(data.def[0].tr[0].syn.length > 0) {
@@ -110,21 +76,24 @@ readBlockApp.directive('dictionary', ['$http', function($http) {
                 // ...
               }).
               error(function (data, status, headers, config) {
-                // ...
+                console.log("Error retrieving translations");
+                scope.wordType = "Not Available";
+                scope.translations[0] = "Not Available";
           });
         }
         else { // get pos from english dictionary and translations from translator
-          $http({ method: 'GET', url: 'https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key=dict.1.1.20160414T182102Z.74d50fe4fb0fb84f.cd90aa001917f7c3f8ee38ff0c7655da1b8034f0&lang=en-en&text=' + word + "&flags=4" }).
+          $http({ method: 'GET', url: 'https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key=dict.1.1.20160414T182102Z.74d50fe4fb0fb84f.cd90aa001917f7c3f8ee38ff0c7655da1b8034f0&lang=en-en&text=' + newWord + "&flags=4" }).
                   success(function (data, status, headers, config) {
                     if(data.def.length > 0) {
                       // console.log(data);
-                      scope.wordType = data.def[0].pos;
+                      wordType = data.def[0].pos;
+                      addWord();
                     }
                   }).
                   error(function(data, status, headers, config) {
-                     scope.wordType = "Not Available";
+                     wordType = "Not Available";
                   });
-          $http({ method: 'GET', url: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20160414T180419Z.9b224c97041d124a.59f09d3010d84d79c50cd804c57b0bc0e7e5ed8e&text=' + word + '&lang=en-hu' }).
+          $http({ method: 'GET', url: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20160414T180419Z.9b224c97041d124a.59f09d3010d84d79c50cd804c57b0bc0e7e5ed8e&text=' + newWord + '&lang=en-hu' }).
                   success(function (data, status, headers, config) {
                     // if(data.def.length > 0) {
                       // console.log(data);
@@ -136,57 +105,13 @@ readBlockApp.directive('dictionary', ['$http', function($http) {
                      scope.translations = scope.translations.concat("Not Available");
                   });
         }
+        
+        function addWord() {
+          scope.wordType = wordType;
+          var addWord = {word: newWord, pos: wordType, sentence: 'This is just a bad example of a sentence using the word ' + newWord};
+          scope.$parent.dynamicContent[0].data.push(addWord);
+        }
       }); //watch
     }
   }
 }]);
-
-// readBlockApp.directive('popover', function($compile){
-//     return {
-//         link: function(scope, element, attrs) {
-//             // define popover for this element
-//             $(element).popover({
-//                 html: true,
-//                 placement: "top",
-//                 // grab popover content from the next element
-//                 content: $compile( $(element).siblings(".pop-content").contents() )(scope)
-//             });
-//         }
-//     }
-// });
-
-
-// readBlockApp.directive('remotehighlight', function(word) {
-//   function escapeRegExp(str) { //Use regExp to find all matching words
-//         return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-//       }
-//     var html = element.html().replace(new RegExp(escapeRegExp(data), 'g'), '<span class="highlight">'+word+'</span>'); //grap the element html and replace matched words with highlight class surrounding
-// 	  element.html(html);
-//   }  
-// });
-
-// readBlockApp.controller('readBlockController', ['$scope', function($scope) {
-//   $scope.testfunction = function (data) {
-//         alert("---" + data);
-//     };
-//   $scope.wordselectfunction = function (data) {
-    
-//   }
-      
-// }]);
-
-// readBlockApp.directive('customPopover', function () {
-//     return {
-//         restrict: 'A',
-//         // template: '<span>{{label}}</span>',
-//         link: function (scope, el, attrs) {
-//             // scope.label = attrs.popoverLabel;
-//             $(el).popover({
-//                 trigger: 'click',
-//                 html: true,
-//                 content: "ahoy there!",
-//                 placement: attrs.popoverPlacement
-//             });
-//         }
-//     };
-// });

@@ -1,5 +1,4 @@
 var theirID;
-// var imageSearch = "";
 
 function my_init() {
      easyrtc.setRoomOccupantListener( loggedInListener);
@@ -8,7 +7,6 @@ function my_init() {
             console.log("My easyrtcid is " + myId);
          }
      );
-    //  easyrtc.enableDataChannels(true);
      chatListener();
     $.material.init();
 }
@@ -20,18 +18,19 @@ function loggedInListener(roomName, otherPeers) {
         otherClientDiv.removeChild(otherClientDiv.lastChild);
     }
     for(var i in otherPeers) {
-        var button = document.createElement('button');
-        button.onclick = function(easyrtcid) {
-            return function() {
-                performCall(easyrtcid);
-            }
-        }(i);
-        
         theirID = i;
-        label = document.createTextNode("Call ID: " + i);
-        button.appendChild(label);
-        otherClientDiv.appendChild(button);
-        console.log("Someone connected");
+        // var button = document.createElement('button');
+        if (document.getElementById('call-button')) {
+            var button = document.getElementById('call-button');
+            button.className += " btn-success";
+            button.onclick = function(easyrtcid) {
+                return function() {
+                    performCall(easyrtcid);
+                }
+                
+            }(i);
+            console.log("Someone connected");
+        }
     }
 }
 
@@ -45,10 +44,6 @@ function performCall(easyrtcid) {
           console.log((accepted?"accepted":"rejected")+ " by " + bywho);
        }
    );
-//   sendMessage(easyrtcid, 'contactInfo', { firstName:'john', lastName:'smith' });
-//   easyrtc.setDataChannelOpenListener(
-//         function(easyrtcid) { console.log("channel is open");}
-//     );
 }
 
 function hangUp() {
@@ -57,7 +52,6 @@ function hangUp() {
 }
 
 function sendMessage(messageType, messageData) {
-    // easyrtc.sendDataWS( destination, messageType, messageData, ackHandler);
     console.log("sending message");
     if(messageType == 'setImages') {
         console.log("setting image search query");
@@ -84,15 +78,6 @@ function chatListener() {
         }
     });
 }
-// conn.on('data', function(data) {
-//     console.log('Received', data);
-//     var div = document.createElement('div');
-//     div.className = 'that-message pull-left';
-//     div.innerHTML = '<p>' + data + '</p>';
-//     var chatWindow = document.getElementById("chat-window");
-//     chatWindow.appendChild(div);
-//     chatWindow.scrollTop = chatWindow.scrollHeight;
-// });
 
 easyrtc.setPeerListener( function(sendersEasyrtcid, msgType, msgData, targeting) {
     if( msgType === 'contactInfo' ) {
@@ -143,36 +128,12 @@ easyrtc.setPeerListener( function(sendersEasyrtcid, msgType, msgData, targeting)
     }
 });
 
-// function testThings() {
-//     angular.element(document.getElementById('reading')).scope().testfunction('test');
-// }
-
 function disableCamera() {
     easyrtc.enableCamera(false);
-//     var MediaStream = window.MediaStream;
 
-// if (typeof MediaStream === 'undefined' && typeof webkitMediaStream !== 'undefined') {
-//     MediaStream = webkitMediaStream;
-// }
-
-// /*global MediaStream:true */
-// if (typeof MediaStream !== 'undefined' && !('stop' in MediaStream.prototype)) {
-//     MediaStream.prototype.stop = function() {
-//         this.getAudioTracks().forEach(function(track) {
-//             track.stop();
-//         });
-
-//         this.getVideoTracks().forEach(function(track) {
-//             track.stop();
-//         });
-//     };
-// }
     easyrtc.getLocalStream().getVideoTracks().forEach(function(track) {
         track.stop()
     });
-    // easyrtc.getLocalStream().getAudioTracks().forEach(function(track) {
-    //     track.stop()
-    // });
 }
 
 function enableCamera() {

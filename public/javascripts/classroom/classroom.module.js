@@ -2,50 +2,18 @@
 
 var classroomApp = angular.module('classroomApp', ['ngRoute', 'readBlockApp', 'convoBlockApp', 'vocabBlockApp', 'videoBlockApp']);
 
-// classroomApp.service('myService', function($http) {
-//     return {
-//         getHTML: function() {
-// 			return $http({
-// 				method: 'GET',
-// 				url: '../views/testReadBlock.html'
-// 			}).success(function(data){
-// 				return data;
-// 			});
-//         }
-//     };
-// });
 
-// // Stolen from: http://stackoverflow.com/questions/18157305/angularjs-compiling-dynamic-html-strings-from-database
-// classroomApp.directive('dynamic', function ($compile) {
-//   return {
-//     replace: true,
-//     link: function (scope, ele, attrs) {
-//       scope.$watch(attrs.dynamic, function(html) {
-// 		if (!html) {
-// 			return;
-// 		}
-//         ele.html((typeof(html) === 'string') ? html : html.data);
-//         $compile(ele.contents())(scope);
-//       });
-//     }
-//   };
-// });
-
-// classroomApp.controller('classroomController', ['$scope', 'myService', function($scope, myService) {
-//     $scope.homeMessage = 'page 1';
-//     $scope.addMoreStuffToPage = function() {
-//         $scope.waitForIt = myService.getHTML();
-// 	};
-// }]);
+// the classroomController takes care of the insertion of content blocks in the lesson
+// first, the templates are loaded, then the content is loaded and finally functions are used to add blocks to the DOM
 classroomApp.controller('classroomController', ['$scope', '$http', '$location', function($scope, $http, $location) {
   // $locationProvider.html5Mode(true);  // Nasty hack to get around locationProvider issue
   $scope.currentPath = $location.absUrl().split('/');
   $scope.currentPath = $scope.currentPath[$scope.currentPath.length - 1];
-  $scope.intro = true;
-  $scope.maxDynVocab = false;
+  $scope.intro = true; // student will see welcome message when no blocks are present
+  $scope.maxDynVocab = false; // limit number of dynamic vocab blocks
   $scope.maxImage = false;
   
-  $scope.templates =
+  $scope.templates = // load block template html files 
     [ { id: 1, name: 'Reading Block', url: '../views/partials/lesson blocks/readingBlock.html'},
       { id: 2, name: 'Conversation Block', url: '../views/partials/lesson blocks/conversationBlock.html'},
       { id: 3, name: 'Vocabulary Block', url: '../views/partials/lesson blocks/vocabularyBlock.html'},
@@ -53,8 +21,8 @@ classroomApp.controller('classroomController', ['$scope', '$http', '$location', 
       { id: 5, name: 'Image Block', url: '../views/partials/lesson blocks/imageBlock.html'}];
   $scope.template = $scope.templates[0];
   
-  $scope.content = null;
-  $http.get('../content/trialLessonData.json')
+  $scope.content = null; // initialize variable to hold content data
+  $http.get('../content/trialLessonData.json') // load content from json file. TODO serve from server
       .success(function(data) {
           $scope.content=data;
       })
@@ -63,7 +31,7 @@ classroomApp.controller('classroomController', ['$scope', '$http', '$location', 
           console.log("Failed to load content data\n" + data + "\n" + status + "\n" + error + "\n" + config);
       });
   
-  $scope.dynamicContent = null;
+  $scope.dynamicContent = null; // dynamic content json is unnecessary simply gives titles
   $http.get('../content/dynamicLessonData.json')
       .success(function(data) {
           $scope.dynamicContent=data;
@@ -73,22 +41,22 @@ classroomApp.controller('classroomController', ['$scope', '$http', '$location', 
           console.log("Failed to load dynamic content data\n" + data + "\n" + status + "\n" + error + "\n" + config);
       });
   
-  //inserted blocks
+  //keep track of inserted blocks
   $scope.blocks = [];
-  // $scope.blocks = $scope.blocks.concat($scope.templates[0]);
+  // $scope.blocks = $scope.blocks.concat($scope.templates[0]); // testing, add block directly from id
   // $scope.blocks[0].contentId = {id: $scope.content[1].id, type: 'static'};
-  $scope.insert = function(index, type) {
+  $scope.insert = function(index, type) { // function to insert block, first insert locally then send message to peer to insert remotely
     $scope.localInsert(index, type);
     var msg = {index: index, type: type}
     sendMessage('blockInsert', msg);
   }
-  $scope.remoteInsert = function(index, type) {
+  $scope.remoteInsert = function(index, type) { // called when blockInsert message recieved, calls localInsert and then $apply to update scope
     $scope.intro = false;
     $scope.localInsert(index, type);
     $scope.$apply();
     console.log("Remote insert function called " + index);
   }
-  $scope.localInsert = function(index, type) {
+  $scope.localInsert = function(index, type) { // TODO convert to switch - more readable 
     if(type == 'static') {
       if( $scope.content[index].content_type == "reading" ) {
         $scope.blocks = $scope.blocks.concat($scope.templates[0]);
@@ -106,12 +74,6 @@ classroomApp.controller('classroomController', ['$scope', '$http', '$location', 
       console.log("Local insert function called " + index);
     }
     else if(type == 'dynamic') {
-      // if( $scope.dynamicContent[index].content_type == "reading" ) {
-      //   $scope.blocks = $scope.blocks.concat($scope.templates[0]);
-      // }
-      // else if( $scope.dynamicContent[index].content_type == "conversation" ) {
-      //   $scope.blocks = $scope.blocks.concat($scope.templates[1]);
-      // }
       if( $scope.dynamicContent[index].content_type == "vocabulary" && $scope.maxDynVocab == false) {
         $scope.blocks = $scope.blocks.concat($scope.templates[2]);
         $scope.maxDynVocab = true;
@@ -125,50 +87,9 @@ classroomApp.controller('classroomController', ['$scope', '$http', '$location', 
     }
   }
   
-  $scope.insertWord = function(word) {
-    var newWord = {word: word, pos: 'TODO', sentence: 'TODO'};
-    $scope.dynamicContent[0].data.push(newWord);
-    $scope.$apply();
-  }
-  
-  // console.log($location.path());
+  // $scope.insertWord = function(word) {
+  //   var newWord = {word: word, pos: 'TODO', sentence: 'TODO'};
+  //   $scope.dynamicContent[0].data.push(newWord);
+  //   $scope.$apply();
+  // }
 }]);
-
-// classroomApp.directive('classroom', function() {
-//   return {
-//     restrict: 'A',
-//     link: function(scope, element, attrs) {
-//       scope.insert = function(index) {
-//         // $scope.blocks = $scope.blocks.concat({ block: 'vocabulary', url: '../views/testVocabBlock.html' });
-//         scope.blocks = scope.blocks.concat(scope.templates[index]);
-//         $scope.$apply();
-//         console.log("Insert function called " + index);
-//         // sendMessage('blockInsert', index);
-//       }
-//     }
-//   }
-// });
-
-
-// //TODO remove highlight if re-selected / send word to database / tool-tip dictionary definition
-// classroomApp.directive('highlight', function() {
-//   function escapeRegExp(str) { //Use regExp to find all matching words
-//     return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-//   }
-//   return {
-//     restrict: 'E',
-//     link: function(scope, element, attrs) {
-//       element.css({ cursor: 'pointer' });
-//       element.on('dblclick', function(e) {
-//         var range = window.getSelection() || document.getSelection() || document.selection.createRange();
-//         var word = range.toString().trim();
-//         if(word !== '') {
-//           console.log(word);
-//         }
-//         var html = element.html().replace(new RegExp(escapeRegExp(word), 'g'), '<span class="highlight">'+word+'</span>'); //grap the element html and replace matched words with highlight class surrounding
-// 			  element.html(html);
-//         e.stopPropagation();
-//       });      
-//     }
-//   }
-// });

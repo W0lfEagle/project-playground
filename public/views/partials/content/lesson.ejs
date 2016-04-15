@@ -1,12 +1,5 @@
 <div class="col-sm-8 height-full lesson mCustomScrollbar" id="lesson">
-    <!--<h1 class="text-center"> T </h1>-->
-    <!--<a href="#" id="insert-module">Insert Module</a>-->
-
-<!-- FROM https://docs.angularjs.org/api/ng/directive/ngInclude -->
-    
-    
-    <div ng-if="currentPath == 'teacherroom'" class="container-fluid pad-top">
-        <!--<button onclick="sendLessonToDB()" class="btn btn-flat btn-warning">Send To DB</button> -->
+    <div ng-show="currentPath == 'teacherroom'" class="container-fluid pad-top">
         <div class="col-xs-12 col-sm-10 col-sm-offset-1">
            <div class="panel panel-info">
               <div class="panel-heading">
@@ -14,44 +7,15 @@
               </div>
               <div class="panel-body insert-panel mCustomScrollbar"> <!--  data-mcs-theme="minimal-dark" -->
                     <h2 class=blockSectionHeader>Pre-Made Blocks</h2>
-                    <!--<button onclick="sendMessage('blockInsert', 'reading block')">Block insert</button>-->
-                    <!--<a href="" onclick="sendMessage('blokInsert, 'reading block')" class="btn btn-raised btn-info">Insert</a>-->
                     <div class="row">
                         <div ng-repeat="block in content" class="col-sm-4" ng-init="i = $index">
-                            <div ng-if="block.content_type == 'conversation'" class="panel panel-primary">
+                            <div class="panel" ng-class="{'panel-primary' : (block.content_type == 'conversation'), 'panel-success' : (block.content_type == 'reading'), 'panel-warning' : (block.content_type == 'vocabulary'), 'panel-danger' : (block.content_type == 'video')}"> <!-- ng-if="block.content_type == 'conversation'"  class="panel-primary"-->
                                 <div class="panel-heading">
-                                    <h2 class="panel-title">Conversation</h3>
+                                    <h2 class="panel-title">{{block.content_type}}</h3>
                                 </div>
                                 <div class="panel-body">
                                     <p>{{block.title}}</p>
-                                    <button ng-click="insert($index, 'static')" class="btn btn-flat btn-warning">Preview</button>
-                                </div>
-                            </div>
-                            <div ng-if="block.content_type == 'reading'" class="panel panel-success">
-                                <div class="panel-heading">
-                                    <h2 class="panel-title">Reading</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <p>{{block.title}}</p>
-                                    <button ng-click="insert($index, 'static')" class="btn btn-flat btn-warning">Preview</button>
-                                </div>
-                            </div>
-                            <div ng-if="block.content_type == 'vocabulary'" class="panel panel-warning">
-                                <div class="panel-heading">
-                                    <h2 class="panel-title">Vocabulary</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <p>{{block.title}}</p>
-                                    <button ng-click="insert($index, 'static')" class="btn btn-flat btn-warning">Preview</button>
-                                </div>
-                            </div>
-                            <div ng-if="block.content_type == 'video'" class="panel panel-danger">
-                                <div class="panel-heading">
-                                    <h2 class="panel-title">Video</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <p>{{block.title}}</p>
-                                    <button ng-click="insert($index, 'static')" class="btn btn-flat btn-warning">Preview</button>
+                                    <button ng-click="insert($index, 'static')" class="btn btn-flat btn-warning">Insert</button>
                                 </div>
                             </div>
                         </div> <!-- ng-repeat col -->
@@ -60,24 +24,6 @@
                     <div class="row">
                         <h2 class=blockSectionHeader>Dynamic Blocks</h2>
                         <div ng-repeat="block in dynamicContent" class="col-sm-4">
-                            <div ng-if="block.content_type == 'conversation'" class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <h2 class="panel-title">Conversation</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <p>{{block.title}}</p>
-                                    <button ng-click="insert($index, 'dynamic')" class="btn btn-flat btn-warning">Preview</button>
-                                </div>
-                            </div>
-                            <div ng-if="block.content_type == 'reading'" class="panel panel-success">
-                                <div class="panel-heading">
-                                    <h2 class="panel-title">Reading</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <p>{{block.title}}</p>
-                                    <button ng-click="insert($index, 'dynamic')" class="btn btn-flat btn-warning">Preview</button>
-                                </div>
-                            </div>
                             <div ng-if="block.content_type == 'vocabulary'" class="panel panel-warning">
                                 <div class="panel-heading">
                                     <h2 class="panel-title">Vocabulary</h3>
@@ -85,7 +31,7 @@
                                 <div class="panel-body">
                                     <p>{{block.title}}</p>
                                     <p>You have <strong>{{block.data.length}}</strong> words selected</p>
-                                    <button ng-click="insert($index, 'dynamic')" class="btn btn-flat btn-warning">Preview</button>
+                                    <button ng-click="insert($index, 'dynamic')" class="btn btn-flat btn-warning">Insert</button>
                                 </div>
                             </div>
                             <div ng-if="block.content_type == 'image'" class="panel panel-default">
@@ -94,7 +40,7 @@
                                 </div>
                                 <div class="panel-body">
                                     <p>{{block.title}}</p>
-                                    <button ng-click="insert($index, 'dynamic')" class="btn btn-flat btn-warning">Preview</button>
+                                    <button ng-click="insert($index, 'dynamic')" class="btn btn-flat btn-warning">Insert</button>
                                 </div>
                             </div>
                         </div> <!-- ng-repeat col -->
@@ -111,7 +57,7 @@
         <p>Make sure to click accept.</p>
     </div>
     
-    
+    <!-- Insert all blocks in the blocks array - TODO remove blocks-->
     <div ng-repeat="block in blocks track by $index">
         <div ng-include="block.url" ng-init="contentId = block.contentId"></div>
     </div>

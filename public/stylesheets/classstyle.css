@@ -126,7 +126,7 @@ input.spmhidip {
 }
 
 .their-video, .my-video {
-  width: inherit; 
+  width: inherit;
   height: inherit;
   position: absolute;
   top: 0;
