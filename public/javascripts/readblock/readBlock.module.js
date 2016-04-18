@@ -37,7 +37,7 @@ readBlockApp.directive('highlight', function($compile) {
 });
 
 // dictionary directive takes care of getting pos and translations from Yandex API and updating the scope as required
-readBlockApp.directive('dictionary', ['$http', function($http) {
+readBlockApp.directive('dictionary', ['DictionaryFactory', function(DictionaryFactory) {
   return {
     restrict: 'A',
     link: function(scope, element, attrs) {
@@ -55,55 +55,50 @@ readBlockApp.directive('dictionary', ['$http', function($http) {
         
         scope.wordType = "searching...";
         
+        // var dictionaryTranslation = new DictionaryTranslation(newWord, destLang);
+        // console.log("The POS is " + dictionaryTranslation);
+        var data = {};
+        
         if(destLang != "hu") {
-          $http({ method: 'GET', url: 'https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key=dict.1.1.20160414T182102Z.74d50fe4fb0fb84f.cd90aa001917f7c3f8ee38ff0c7655da1b8034f0&lang=en-' + destLang + '&text=' + newWord + "&flags=4" }).
-              success(function (data, status, headers, config) {
-                
-                if(data.def.length > 0) {
-                  console.log(data);
-                  wordType = data.def[0].pos;
-                  addWord();
-                  scope.translations = scope.translations.concat(data.def[0].tr[0].text);
-                  // console.log(data.def[0].tr[0].text);
-                  if(data.def[0].tr[0].syn.length > 0) {
-                    for (var i = 0; i < data.def[0].tr[0].syn.length; i++) {
-                      scope.translations = scope.translations.concat(data.def[0].tr[0].syn[i].text);
-                      console.log(data.def[0].tr[0].syn[i].text);
-                    }
-                  }
+          DictionaryFactory.loadDictionaryTranslations(newWord, destLang).then(function(response) {
+            // console.log(response.data);
+            data = response.data;
+          
+            if(data.def.length > 0) {
+              // console.log(data);
+              wordType = data.def[0].pos;
+              addWord();
+              scope.translations = scope.translations.concat(data.def[0].tr[0].text);
+              // console.log(data.def[0].tr[0].text);
+              if(data.def[0].tr[0].syn && data.def[0].tr[0].syn.length > 0) {
+                for (var i = 0; i < data.def[0].tr[0].syn.length; i++) {
+                  scope.translations = scope.translations.concat(data.def[0].tr[0].syn[i].text);
+                  // console.log(data.def[0].tr[0].syn[i].text);
                 }
-                else scope.wordType = "";
-                // ...
-              }).
-              error(function (data, status, headers, config) {
-                console.log("Error retrieving translations");
-                scope.wordType = "Not Available";
-                scope.translations[0] = "Not Available";
+              }
+            }
+            else scope.wordType = "";
           });
         }
-        else { // get pos from english dictionary and translations from translator
-          $http({ method: 'GET', url: 'https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key=dict.1.1.20160414T182102Z.74d50fe4fb0fb84f.cd90aa001917f7c3f8ee38ff0c7655da1b8034f0&lang=en-en&text=' + newWord + "&flags=4" }).
-                  success(function (data, status, headers, config) {
-                    if(data.def.length > 0) {
-                      // console.log(data);
-                      wordType = data.def[0].pos;
-                      addWord();
-                    }
-                  }).
-                  error(function(data, status, headers, config) {
-                     wordType = "Not Available";
-                  });
-          $http({ method: 'GET', url: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20160414T180419Z.9b224c97041d124a.59f09d3010d84d79c50cd804c57b0bc0e7e5ed8e&text=' + newWord + '&lang=en-hu' }).
-                  success(function (data, status, headers, config) {
-                    // if(data.def.length > 0) {
-                      // console.log(data);
-                      // scope.wordType = data.def[0].pos;
-                      scope.translations = scope.translations.concat(data.text[0]);
-                    // }
-                  }).
-                  error(function(data, status, headers, config) {
-                     scope.translations = scope.translations.concat("Not Available");
-                  });
+        else {
+          DictionaryFactory.loadDictionaryEn(newWord).then(function(response) {
+            console.log(response.data);
+            data = response.data;
+            if(data.def.length > 0) {
+              wordType = data.def[0].pos;
+              addWord();
+            }
+          });
+          
+          DictionaryFactory.loadTranslations(newWord, destLang).then(function(response) {
+            console.log(response.data);
+            data = response.data;
+            if(data.text.length > 0) {
+              for (var i in data.text) {
+                scope.translations = scope.translations.concat(data.text[i]);
+              }
+            }
+          });
         }
         
         function addWord() {
@@ -115,3 +110,27 @@ readBlockApp.directive('dictionary', ['$http', function($http) {
     }
   }
 }]);
+
+readBlockApp.factory("DictionaryFactory", function($http) {
+  var factory = {};
+    
+  factory.loadDictionaryTranslations = function(word, destLang) {
+    console.log("Getting dictionary translations for " + word + ' ' + destLang);
+    var url = 'https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key=dict.1.1.20160414T182102Z.74d50fe4fb0fb84f.cd90aa001917f7c3f8ee38ff0c7655da1b8034f0&lang=en-' + destLang + '&text=' + word + '&flags=4';
+    return $http.get(url);
+  };
+  
+  factory.loadTranslations = function(word, destLang) {
+    console.log("Getting translation for " + word + ' ' + destLang);
+    var url = 'https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20160414T180419Z.9b224c97041d124a.59f09d3010d84d79c50cd804c57b0bc0e7e5ed8e&text=' + word + '&lang=en-' + destLang;
+    return $http.get(url);
+  };
+  
+  factory.loadDictionaryEn = function(word) {
+    console.log("Getting English dictionary for " + word);
+    var url = 'https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key=dict.1.1.20160414T182102Z.74d50fe4fb0fb84f.cd90aa001917f7c3f8ee38ff0c7655da1b8034f0&lang=en-en&text=' + word + '&flags=4';
+    return $http.get(url);
+  };
+  
+  return factory;
+});
