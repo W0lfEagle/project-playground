@@ -103,13 +103,13 @@ classroomApp.controller('classroomController', ['$scope', '$http', '$location', 
   // }
 }]);
 
-classroomApp.directive('videocomms', function() {
-  return {
-    restrict: 'A',
-    link: function(scope, element, attrs) {
-      scope.myVideoDivHeight = element.height();
-      console.log(scope.myVideoDivHeight);
-      console.log(element[0].querySelector('#caller').offsetHeight);
-    }
-  }
-});
+// classroomApp.directive('videocomms', function() {
+//   return {
+//     restrict: 'A',
+//     link: function(scope, element, attrs) {
+//       scope.myVideoDivHeight = element.height();
+//       console.log(scope.myVideoDivHeight);
+//       console.log(element[0].querySelector('#caller').offsetHeight);
+//     }
+//   }
+// });

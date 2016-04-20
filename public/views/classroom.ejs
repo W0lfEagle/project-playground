@@ -8,12 +8,12 @@
  -->
  
 <!DOCTYPE html>
-<html>
+<html ng-app="classroomApp">
     <head>
         <% include partials/template/classhead.ejs %>
     </head>
     <body onload="my_init()">
-        <div class="container-fluid height-full" id="classroom" classroom ng-app="classroomApp" ng-controller="classroomController">
+        <div class="container-fluid height-full" id="classroom" classroom ng-controller="classroomController">
             {{LooksLikeAngularIsBroken}}
             <div class="row height-full">
                 <% include partials/content/lesson.ejs %>
