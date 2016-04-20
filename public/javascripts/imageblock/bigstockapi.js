@@ -1,4 +1,13 @@
-// change to your account id at bigstock.com/partners
+/**
+ * Name: Wilford Engel
+ * SRN: 130190747
+ * Date: 19th April 2016
+ * Description: javascript for the image block bigstock api call
+ * calls the api with the search query as described by the api docs
+ * provides setImages() function to remotely set the image search on the student 
+ * side
+ */
+
 var account_id = '274212'; // TODO keep secret
 var selected_category, search_term, page, max_page, jsonp_happening;
 var limit = 9; // limit number of search results, 3x3

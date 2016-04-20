@@ -1,3 +1,11 @@
+/**
+ * Name: Wilford Engel
+ * SRN: 130190747
+ * Date: 19th April 2016
+ * Description: Node server file imported by www to handle database connections,
+ * user authentication, setup server-side routing and handle errors
+ */
+
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
@@ -8,7 +16,6 @@ var passport = require('passport'); //For user login
 var expressSession = require('express-session'); //For login session
 var flash = require('connect-flash'); //For error messages
 var connectMongo = require('connect-mongo'); //For persistent sessions
-// var angular = require('angular');
 
 var config = require('./config'); //Mongo config
 var routes = require('./routes/index');
@@ -23,6 +30,7 @@ passportConfig();
 
 mongoose.set('debug', true);
 
+// TODO set up multiple database connections, one for users, one for lesson data
 console.log('mongoose debugging');
 mongoose.connect(config.mongoUri);
 // mongoose.connect(config.mongoCompletedLessonUri);
@@ -93,13 +101,6 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
-
 
 // angular.module('app', ['angular-loading-bar']); 
 

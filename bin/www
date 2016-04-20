@@ -1,6 +1,16 @@
 #!/usr/bin/env node
 
 /**
+ * Name: Wilford Engel
+ * SRN: 130190747
+ * Date: 19th April 2016
+ * Description: Node server file executed on server launch
+ * Sets up easyRTC signalling server to connect peers
+ * Listens for easyRTC message to save lesson content to database
+ * Will be used to serve lesson content from database in the future
+ */
+
+/**
  * Module dependencies.
  */
 
@@ -156,30 +166,6 @@ easyrtc.events.on("roomJoin", function(connectionObj, roomName, roomParameter, c
     console.log("["+connectionObj.getEasyrtcid()+"] Credential retrieved!", connectionObj.getFieldValueSync("credential"));
     easyrtc.events.defaultListeners.roomJoin(connectionObj, roomName, roomParameter, callback);
 });
-
-// var onEasyrtcMsg = function(connectionObj, msg, socketCallback, next){
-//   console.log("Hello from the server");
-//     switch(msg.msgType){
-//         case "lockRoom":
-//             /* code to lock the room */
-//             socketCallback({msgType:'lockRoomACK', msgData:''}); //nice
-//             next(null);
-//             console.log("Server recieved data: " + msg)
-//             break;
-
-//         case "unlockRoom":
-//             /* code to unlock the room */
-//             socketCallback({msgType:'unlockRoomACK', msgData:''});
-//             next(null);
-//             break;
-
-//         default:
-//             easyrtc.events.emitDefault("easyrtcMsg", connectionObj, msg, socketCallback, next);
-//             break;
-//     }
-// };
-
-// easyrtc.events.on("easyrtcMsg", onEasyrtcMsg);
 
 
 // Start EasyRTC server

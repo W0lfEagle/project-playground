@@ -1,3 +1,12 @@
+/**
+ * Name: Wilford Engel
+ * SRN: 130190747
+ * Date: 19th April 2016
+ * Description: javascript for setting up and handling easyRTC peer connections,
+ * calls and messages. Uses randomly generated user ids but should be provided by
+ * the user database
+ */
+
 var theirID;
 
 function my_init() {

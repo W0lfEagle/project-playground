@@ -1,19 +1,19 @@
+ <!--
+     Name: Wilford Engel
+     SRN: 130190747
+     Date: 19th April 2016
+     Description: communications panel template, sets up video stream divs for 
+     video communications, shows video control buttons depending on user status,
+     sets instant chat structure
+ -->
+
 <div class="col-sm-4 height-full commsbar">
     <div class="container-fluid height-full">
         <div class="row">
             <div class="col-xs-12 height-half">
-                <!--<a href="#" id="make-call">Call</a>-->
-                <!--<a href="" id="end-call">End Call</a>-->
-                
-                <!--<button onclick="hangUp()">End Call</button>-->
-                <!--<a href="" onclick="hangUp()" class="btn btn-raised btn-danger">End Call</a>-->
-                <div class="video" height-target>
-                    <!--<video id="their-video" autoplay class="their-video"></video>-->
-                    <!--<div class="this-video">-->
-                    <!--    <video id="my-video" muted="true" autoplay class="my-video"></video>-->
-                    <!--</div>-->
-                    <video id="caller" class="their-video" height-source></video>
-                    <div class="my-video-div">
+                <div class="video" videocomms>
+                    <video id="caller" class="their-video"></video>
+                    <div class="my-video-div"">
                         <video id="self" class="my-video" muted="muted"></video>
                     </div>
                     <div class="video-buttons">

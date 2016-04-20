@@ -1,3 +1,10 @@
+/**
+ * Name: Wilford Engel
+ * SRN: 130190747
+ * Date: 19th April 2016
+ * Description: Service to add user data to the students database
+ */
+
 var bcrypt = require('bcrypt');
 var User = require('../models/user').User;
 

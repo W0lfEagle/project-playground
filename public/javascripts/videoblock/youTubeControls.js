@@ -1,3 +1,12 @@
+/**
+ * Name: Wilford Engel
+ * SRN: 130190747
+ * Date: 19th April 2016
+ * Description: javascript for controlling the youtube video
+ * sets up the video using the video id, starts the iframe api service,
+ * provides functions for local/remote controlling playback
+ */
+
 var player;
 var thisVideoId = "";
 

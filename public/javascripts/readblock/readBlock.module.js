@@ -1,3 +1,13 @@
+/**
+ * Name: Wilford Engel
+ * SRN: 130190747
+ * Date: 19th April 2016
+ * Description: angular controllers and directives for the reading block
+ * listens for clicks on the article, finds the word and highlights, directive
+ * for the dictionary looks up translations and POS tags from dictionary API
+ * service and adds the word to the vocabulary for the lesson
+ */
+
 'use strict';
 
 var readBlockApp = angular.module('readBlockApp', ['ngRoute']);
@@ -55,7 +65,7 @@ readBlockApp.directive('dictionary', ['DictionaryFactory', function(DictionaryFa
         
         scope.wordType = "searching...";
         
-        // var dictionaryTranslation = new DictionaryTranslation(newWord, destLang);
+        // var dictionaryTranslation = new Dicstyle.heighttionaryTranslation(newWord, destLang);
         // console.log("The POS is " + dictionaryTranslation);
         var data = {};
         

@@ -1,3 +1,10 @@
+/**
+ * Name: Wilford Engel
+ * SRN: 130190747
+ * Date: 19th April 2016
+ * Description: Mongo model for completed lesson database
+ */
+
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 // var userService = require('../services/user-service');

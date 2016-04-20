@@ -1,3 +1,11 @@
+/**
+ * Name: Wilford Engel
+ * SRN: 130190747
+ * Date: 19th April 2016
+ * Description: Service to add data from a lesson to the completed lesson 
+ * database
+ */
+
 // var bcrypt = require('bcrypt');
 var Lesson = require('../models/completedLesson').CompletedLesson;
 

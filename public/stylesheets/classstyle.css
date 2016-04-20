@@ -1,17 +1,17 @@
+/**
+  * Name: Wilford Engel
+  * SRN: 130190747
+  * Date: 19th April 2016
+  * Description: vstylesheet for classroom
+*/
+
 body {
-  /*padding: 50px;*/
-  /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
   background-color: #C4C4C4;
 }
-
-/*a {*/
-  /*color: #00B7FF;*/
-/*}*/
 
 .no-pad {
   padding: 0;
 }
-
 
 .height-full {
   height: 100vh;
@@ -25,12 +25,6 @@ body {
   padding-bottom: 100px;
 }
 
-/*.blue, .blue a {*/
-/*  background-color: #86A8AE;*/
-/*  color: #fcfcfc;*/
-/*  text-decoration: none;*/
-/*}*/
-
 .blockSectionHeader {
   text-align: center;
 }
@@ -40,23 +34,6 @@ body {
   /*font-weight: 400;*/
   padding-bottom: 50px;
 }
-
-/*p {*/
-/*  font-family: 'Catamaran', sans-serif;*/
-/*  font-weight: 200;*/
-/*}*/
-
-/*h2, h3, a, li {*/
-/*  font-family: 'Catamaran', sans-serif;*/
-/*  font-weight: 400;*/
-/*}*/
-
-/*.logreg {
-	float:none;
-    display:inline-block;
-    vertical-align:middle;
-    margin-right:-4px;
-}*/
 
 .insert-panel {
   height: 30vh;
@@ -83,29 +60,12 @@ input.spmhidip {
   padding: 0;
 }
 
-/*.conversation, .reading, .vocab {*/
-  /*background-color: #ff6a33;*/
-/*  min-height: 50vh;*/
-/*  padding-top: 100px;*/
-/*}*/
-
-/*.conversation .section-content {*/
-/*  line-height: 200%;*/
-/*}*/
-
 .commsbar {
   position: fixed;
 }
 
-/*.commsbar {
-	background-color: #1a1a1a;
-}*/
-
 .video {
   background-color: black;
-  /*background-image: url('../img/scary-face.jpg');*/
-  /*background-repeat: no-repeat;*/
-  /*background-size: cover;*/
   border-radius: 5px;
   min-width: 100%;
   min-height: 100%;
@@ -116,12 +76,8 @@ input.spmhidip {
 }
 
 .chat {
-  /*background-color: green;*/
-  /*background-size: cover;*/
-  /*height: 100%;*/
   overflow-y: auto;
   overflow-x: hidden;
-  /*margin-bottom: 50px;*/
   padding-bottom: 50px;
 }
 
@@ -138,20 +94,10 @@ input.spmhidip {
   height: auto   !important;
 }
 
-/*center video in container MEDIA QUERY*/
-/*.their-video {*/
-/*  right: -15%;*/
-/*}*/
-
 .my-video-div {
-  /*position: relative;*/
   width: 100px;
   height: 80px;
-  /*background-color: black;*/
   margin-top: 15px;
-  /*background-image: url('../img/teacher-face.png');*/
-  /*background-repeat: no-repeat;*/
-  /*background-size: cover;*/
 }
 
 .video-buttons {
@@ -168,7 +114,6 @@ input.spmhidip {
   width: 75%;
   min-height: 30px;
   margin-top: 20px;
-  /*position: relative;*/
   padding-left: 20px;
   padding-top: 8px;
   color: white;
@@ -177,26 +122,12 @@ input.spmhidip {
 .this-message {
   background-color: #53adcb;
   border-radius: 5px 5px 0 5px;
-  /*right: 50px;*/
 }
 
 .that-message {
   background-color: #51e951;
   border-radius: 5px 5px 5px 0;
-  /*left: 50px;*/
-  /*top: 60px;*/
 }
-
-/*.vcenter {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
-}
-
-.vertical-align {
-    display: flex;
-    align-items: center;
-}*/
 
 .type-chat {
   width: 75%;
@@ -204,14 +135,7 @@ input.spmhidip {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  /*background-color: black;*/
-  /*position: absolute;*/
-
 }
-
-/*#make-call:active {*/
-  /*display: none;*/
-/*}*/
 
 .highlight {
 	background-color:	rgba(243,243,21,0.4);
@@ -234,37 +158,8 @@ input.spmhidip {
     height: 100%;
 }
 
-/* make modal larger */
-
-/*.modal {*/
-/*  width: 700px*/
-/*}*/
-
-
-/* put the categories in two columns */
-
-/*#categories ul {*/
-/*  -moz-column-count: 2;*/
-/*  -webkit-column-count: 2;*/
-/*  column-count: 2;*/
-/*}*/
-
-
-/* make the thumbnail grid pretty */
-
-/*.thumbnails {*/
-/*  text-align: justify;*/
-/*}*/
-
-/*.thumbnails li {*/
-/*  height: 180px;*/
-/*  display: inline-block;*/
-/*  float: none;*/
-/*}*/
-
 .image-results {
   list-style: none;
-  /*max-height: 200px;*/
   height: 180px;
 }
 

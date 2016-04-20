@@ -1,3 +1,12 @@
+/**
+ * Name: Wilford Engel
+ * SRN: 130190747
+ * Date: 19th April 2016
+ * Description: Main angular application and classroom controller
+ * loads the templates, loads the content from json, inserts content blocks into
+ * the lesson, handles remote block insert calls
+ */
+
 'use strict';
 
 var classroomApp = angular.module('classroomApp', ['ngRoute', 'readBlockApp', 'convoBlockApp', 'vocabBlockApp', 'videoBlockApp']);
@@ -93,3 +102,14 @@ classroomApp.controller('classroomController', ['$scope', '$http', '$location', 
   //   $scope.$apply();
   // }
 }]);
+
+classroomApp.directive('videocomms', function() {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs) {
+      scope.myVideoDivHeight = element.height();
+      console.log(scope.myVideoDivHeight);
+      console.log(element[0].querySelector('#caller').offsetHeight);
+    }
+  }
+});

@@ -1,3 +1,13 @@
+/**
+ * Name: Wilford Engel
+ * SRN: 130190747
+ * Date: 19th April 2016
+ * Description: javascript for the handling the completed lesson database
+ * initiates with default values for testing
+ * sends data as an easyRTC server message using data channels
+ * side
+ */
+
 var lessonId = 2349857; // temporary solution only allows one lesson to be added - set randomly or increment at lesson start
 var studentId = 12390846;
 var studentVocab = {"word": "hello", "sentence": "Hello my pretty."};

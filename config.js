@@ -1,3 +1,11 @@
+/**
+ * Name: Wilford Engel
+ * SRN: 130190747
+ * Date: 19th April 2016
+ * Description: Mongo database config file
+ * needs to be set up to connect to both collections
+ */
+
 var config = {};
 
 // Was rtr - restaurant to room
